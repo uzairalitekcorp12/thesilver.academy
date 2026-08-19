@@ -758,116 +758,6 @@
 
 
 /* ==========================================================================
-   FINAL FUTURE-PROFILES NOTE
-   ========================================================================== */
-
-.sa-faculty-directory__note {
-  display: flex;
-
-  max-width: 760px;
-
-  align-items: flex-start;
-
-  gap: 14px;
-
-  margin:
-    clamp(70px, 9vw, 110px)
-    auto
-    0;
-
-  padding:
-    22px
-    24px;
-
-  border:
-    1px solid
-    var(--color-border);
-
-  border-radius:
-    var(--radius-md);
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--color-primary-pale),
-      var(--color-card)
-    );
-
-  box-shadow:
-    var(--shadow-sm);
-}
-
-
-.sa-faculty-directory__note-icon {
-  display: grid;
-
-  width: 43px;
-  height: 43px;
-
-  flex:
-    0
-    0
-    43px;
-
-  place-items: center;
-
-  border-radius:
-    var(--radius-sm);
-
-  background:
-    var(--color-primary);
-
-  color:
-    var(--color-on-dark);
-}
-
-
-.sa-faculty-directory__note > div > span,
-.sa-faculty-directory__note strong {
-  display: block;
-}
-
-
-.sa-faculty-directory__note > div > span {
-  margin-bottom: 3px;
-
-  color:
-    var(--color-accent-deep);
-
-  font-size: 0.52rem;
-
-  font-weight: 800;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.055em;
-}
-
-
-.sa-faculty-directory__note strong {
-  color:
-    var(--color-text);
-
-  font-size: 0.78rem;
-}
-
-
-.sa-faculty-directory__note p {
-  margin:
-    7px
-    0
-    0;
-
-  color:
-    var(--color-muted);
-
-  font-size: 0.62rem;
-
-  line-height: 1.55;
-}
-
-
-/* ==========================================================================
    DESKTOP TUNING
    ========================================================================== */
 
@@ -996,12 +886,6 @@
       4 / 4.35;
   }
 
-
-  .sa-faculty-directory__note {
-    padding:
-      19px
-      17px;
-  }
 }
 
 
