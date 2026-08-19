@@ -17,6 +17,9 @@
 @import "./contact/components/ContactHero/ContactHero.css";
 @import "./contact/components/ContactDetails/ContactDetails.css";
 
+@import "./faculty/components/FacultyHero/FacultyHero.css";
+@import "./faculty/components/FacultyDirectory/FacultyDirectory.css";
+
 
 /* ========================================================================
    SILVER ACADEMY
@@ -571,6 +574,14 @@
 
 html {
   margin: 0;
+
+  /*
+   * Base desktop scale.
+   *
+   * Large-monitor typography is increased later using min-width
+   * breakpoints. Keeping this explicit makes the scaling predictable.
+   */
+  font-size: 16px;
 
   scroll-behavior: smooth;
 
@@ -1260,6 +1271,224 @@ html {
 
     padding-inline: 18px;
   }
+}
+
+
+
+
+/* ========================================================================
+   LARGE / ULTRA-WIDE SCREEN SYSTEM
+   ========================================================================
+
+   WHY THIS EXISTS
+   ---------------
+   The original design was primarily tuned around normal laptop and desktop
+   widths. On 1600px, 1920px, 2K and larger displays, fixed max-widths and
+   small rem typography can make the interface feel undersized.
+
+   These rules scale the WEBSITE SYSTEM rather than patching every component.
+
+   They affect:
+   - rem-based text
+   - buttons
+   - navbar typography
+   - section typography
+   - cards
+   - spacing
+   - global content width
+
+   Component-specific clamp() maximums remain respected, so hero headings do
+   not grow without control.
+   ======================================================================== */
+
+
+/* ------------------------------------------------------------------------
+   LARGE DESKTOP — 1400+
+   ------------------------------------------------------------------------ */
+
+@media (min-width: 1400px) {
+
+  :root {
+    --site-width: 1240px;
+
+    --section-space:
+      clamp(
+        84px,
+        7vw,
+        124px
+      );
+  }
+
+
+  html {
+    font-size: 16.5px;
+  }
+
+
+  .site-container {
+    width:
+      min(
+        calc(100% - 56px),
+        var(--site-width)
+      );
+  }
+
+
+  .section-head {
+    max-width: 790px;
+  }
+
+
+  .section-description {
+    max-width: 700px;
+  }
+
+}
+
+
+/* ------------------------------------------------------------------------
+   WIDE DESKTOP — 1680+
+   ------------------------------------------------------------------------ */
+
+@media (min-width: 1680px) {
+
+  :root {
+    --site-width: 1320px;
+
+    --section-space:
+      clamp(
+        92px,
+        6.5vw,
+        130px
+      );
+  }
+
+
+  html {
+    font-size: 17px;
+  }
+
+
+  .site-container {
+    width:
+      min(
+        calc(100% - 72px),
+        var(--site-width)
+      );
+  }
+
+
+  .section-head {
+    max-width: 820px;
+  }
+
+
+  .section-kicker {
+    font-size: 0.78rem;
+  }
+
+
+  .section-description {
+    max-width: 730px;
+
+    font-size: 0.96rem;
+  }
+
+}
+
+
+/* ------------------------------------------------------------------------
+   FULL HD / LARGE MONITOR — 1920+
+   ------------------------------------------------------------------------ */
+
+@media (min-width: 1920px) {
+
+  :root {
+    --site-width: 1380px;
+
+    --section-space: 132px;
+
+    --nav-height: 90px;
+  }
+
+
+  html {
+    font-size: 18px;
+  }
+
+
+  .site-container {
+    width:
+      min(
+        calc(100% - 96px),
+        var(--site-width)
+      );
+  }
+
+
+  .section-head {
+    max-width: 860px;
+  }
+
+
+  .section-title {
+    /*
+     * Keep the same design language while allowing slightly more presence
+     * on Full-HD and larger displays.
+     */
+    font-size:
+      clamp(
+        2rem,
+        2.45vw,
+        3rem
+      );
+  }
+
+
+  .section-description {
+    max-width: 760px;
+  }
+
+}
+
+
+/* ------------------------------------------------------------------------
+   2K / ULTRA-WIDE — 2400+
+   ------------------------------------------------------------------------ */
+
+@media (min-width: 2400px) {
+
+  :root {
+    --site-width: 1480px;
+
+    --section-space: 140px;
+
+    --nav-height: 94px;
+  }
+
+
+  html {
+    /*
+     * Stop at a controlled scale.
+     * We do not want 4K displays to make typography enormous.
+     */
+    font-size: 18.5px;
+  }
+
+
+  .site-container {
+    width:
+      min(
+        calc(100% - 120px),
+        var(--site-width)
+      );
+  }
+
+
+  .section-head {
+    max-width: 900px;
+  }
+
 }
 
 

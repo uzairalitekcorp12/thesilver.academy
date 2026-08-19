@@ -2,15 +2,29 @@ import AcademyPage from "./academy/AcademyPage";
 
 
 /* ==========================================================================
-   HOME ROUTE
+   SILVER ACADEMY — HOME ROUTE
+   ==========================================================================
 
-   "/" remains the Academy homepage.
+   ROUTE:
+   /
 
-   Dedicated routes:
-   - /registration
-   - /contact
+   Other pages are automatically provided by their own App Router folders:
+
+   /registration
+      -> app/registration/page.jsx
+
+   /contact
+      -> app/contact/page.jsx
+
+   /faculty
+      -> app/faculty/page.jsx
+
+   No manual router switch is required inside this file.
    ========================================================================== */
 
+
 export default function HomePage() {
-  return <AcademyPage />;
+  return (
+    <AcademyPage />
+  );
 }

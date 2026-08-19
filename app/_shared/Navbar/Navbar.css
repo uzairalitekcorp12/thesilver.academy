@@ -71,13 +71,20 @@
    WEBSITE PREVIEW ANNOUNCEMENT
    ========================================================================
 
-   Clean Silver Academy preview bar.
+   Continuous premium Silver Academy preview ticker.
 
-   - Contains one message only.
-   - Uses the existing Purple + Gold global theme.
-   - Message travels LEFT -> RIGHT.
-   - Pauses on hover for readability.
+   Improvements:
+   - Slightly larger typography.
+   - Slower, more readable movement.
+   - True seamless continuation with no start/end break.
+   - Gold separator dot between every repeated message.
+   - Premium purple atmosphere and soft gold glow.
+   - Hover pauses the ticker.
    - Scroll-away behaviour remains unchanged.
+
+   The six identical groups in Navbar.jsx are intentional.
+   The animation moves exactly ONE group width per cycle,
+   making the loop visually seamless.
    ======================================================================== */
 
 .sa-navbar__announcement {
@@ -106,8 +113,8 @@
     linear-gradient(
       105deg,
       var(--color-primary-deep) 0%,
-      var(--color-primary) 38%,
-      var(--color-primary-rich) 68%,
+      var(--color-primary) 34%,
+      var(--color-primary-rich) 67%,
       var(--color-primary-deep) 100%
     );
 
@@ -139,16 +146,19 @@
 }
 
 
-/* Soft animated gold atmosphere */
+/* ------------------------------------------------------------------------
+   Soft animated gold atmosphere
+   ------------------------------------------------------------------------ */
+
 .sa-navbar__announcement::before {
   position: absolute;
   z-index: -1;
 
   top: 50%;
-  left: -180px;
+  left: -190px;
 
-  width: 360px;
-  height: 150px;
+  width: 390px;
+  height: 160px;
 
   border-radius: 50%;
 
@@ -161,7 +171,7 @@
 
   content: "";
 
-  opacity: 0.12;
+  opacity: 0.13;
 
   pointer-events: none;
 
@@ -170,14 +180,17 @@
 
   animation:
     saAnnouncementAmbient
-    10s
+    13s
     ease-in-out
     infinite
     alternate;
 }
 
 
-/* Subtle polished line at the bottom */
+/* ------------------------------------------------------------------------
+   Polished lower edge
+   ------------------------------------------------------------------------ */
+
 .sa-navbar__announcement::after {
   position: absolute;
 
@@ -192,20 +205,22 @@
       90deg,
       var(--color-transparent),
       var(--color-white-soft),
+      var(--color-gold-soft),
+      var(--color-white-soft),
       var(--color-transparent)
     );
 
   content: "";
 
-  opacity: 0.72;
+  opacity: 0.65;
 
   pointer-events: none;
 }
 
 
-/* ------------------------------------------------------------------------
-   Moving text viewport
-   ------------------------------------------------------------------------ */
+/* ========================================================================
+   MARQUEE VIEWPORT
+   ======================================================================== */
 
 .sa-navbar__announcement-marquee {
   position: relative;
@@ -220,12 +235,16 @@
 
   overflow: hidden;
 
+  /*
+   * A very light edge fade prevents text from appearing
+   * abruptly at the exact browser edge.
+   */
   mask-image:
     linear-gradient(
       90deg,
       transparent 0%,
-      #000 5%,
-      #000 95%,
+      #000 2.5%,
+      #000 97.5%,
       transparent 100%
     );
 
@@ -233,26 +252,99 @@
     linear-gradient(
       90deg,
       transparent 0%,
-      #000 5%,
-      #000 95%,
+      #000 2.5%,
+      #000 97.5%,
       transparent 100%
     );
 }
 
+
+/* ========================================================================
+   CONTINUOUS TRACK
+
+   There are six equal groups.
+
+   16.6666667% of the track = exactly one group.
+
+   Moving from -16.6666667% to 0 therefore replaces one
+   group with an identical group at the exact same position.
+   The browser never reaches a visually empty state.
+   ======================================================================== */
+
+.sa-navbar__announcement-track {
+  display: flex;
+
+  width: max-content;
+
+  min-width: max-content;
+
+  height: 100%;
+
+  align-items: center;
+
+  flex: 0 0 auto;
+
+  will-change:
+    transform;
+
+  animation:
+    saAnnouncementContinuousRight
+    26s
+    linear
+    infinite;
+}
+
+
+/* Pause the entire strip for easy reading. */
+
+.sa-navbar__announcement-marquee:hover
+.sa-navbar__announcement-track {
+  animation-play-state:
+    paused;
+}
+
+
+/* ========================================================================
+   ONE REPEATED MESSAGE GROUP
+   ======================================================================== */
+
+.sa-navbar__announcement-loop {
+  display: inline-flex;
+
+  flex:
+    0
+    0
+    auto;
+
+  align-items: center;
+
+  gap: 0;
+
+  padding-inline:
+    clamp(
+      44px,
+      5.2vw,
+      82px
+    );
+
+  white-space:
+    nowrap;
+}
+
+
+/* ========================================================================
+   ANNOUNCEMENT TEXT
+   ======================================================================== */
 
 .sa-navbar__announcement-text {
   display: inline-block;
 
   width: max-content;
 
-  flex: 0 0 auto;
-
-  padding-inline:
-    clamp(
-      18px,
-      3vw,
-      44px
-    );
+  flex:
+    0
+    0
+    auto;
 
   color:
     var(--color-on-dark);
@@ -260,16 +352,18 @@
   font-family:
     var(--font-primary);
 
-  font-size: 0.69rem;
+  font-size: 0.79rem;
 
   font-weight:
     var(--font-weight-semibold);
 
   line-height: 1.2;
 
-  letter-spacing: 0.012em;
+  letter-spacing:
+    0.014em;
 
-  white-space: nowrap;
+  white-space:
+    nowrap;
 
   text-shadow:
     0
@@ -277,25 +371,30 @@
     8px
     var(--color-black-faint);
 
-  will-change: transform;
-
-  animation:
-    saAnnouncementMoveRight
-    18s
-    linear
-    infinite;
+  transition:
+    color
+      var(--transition-base),
+    text-shadow
+      var(--transition-base);
 }
 
 
 .sa-navbar__announcement-marquee:hover
 .sa-navbar__announcement-text {
-  animation-play-state: paused;
+  color:
+    var(--color-white);
+
+  text-shadow:
+    0
+    1px
+    12px
+    var(--color-black-soft);
 }
 
 
-/* ------------------------------------------------------------------------
-   Scroll-away behaviour
-   ------------------------------------------------------------------------ */
+/* ========================================================================
+   SCROLL-AWAY BEHAVIOUR
+   ======================================================================== */
 
 .sa-navbar--announcement-hidden
 .sa-navbar__announcement {
@@ -312,15 +411,22 @@
 }
 
 
-/* ------------------------------------------------------------------------
-   Announcement animations
-   ------------------------------------------------------------------------ */
+/* ========================================================================
+   ANNOUNCEMENT ANIMATIONS
+   ======================================================================== */
 
-@keyframes saAnnouncementMoveRight {
+/*
+ * LEFT -> RIGHT movement.
+ *
+ * The distance is exactly one of six repeated groups.
+ * Because the next group is identical, the restart is invisible.
+ */
+
+@keyframes saAnnouncementContinuousRight {
   from {
     transform:
       translate3d(
-        -100%,
+        -16.6666667%,
         0,
         0
       );
@@ -329,12 +435,14 @@
   to {
     transform:
       translate3d(
-        100vw,
+        0,
         0,
         0
       );
   }
 }
+
+
 
 
 @keyframes saAnnouncementAmbient {
@@ -351,11 +459,11 @@
   to {
     transform:
       translate3d(
-        520px,
+        560px,
         -50%,
         0
       )
-      scale(1.12);
+      scale(1.13);
   }
 }
 
@@ -1884,14 +1992,24 @@ input::placeholder {
 @media (max-width: 1024px) {
 
   .sa-navbar {
-    --sa-announcement-height: 40px;
+    --sa-announcement-height: 42px;
+  }
+
+
+  .sa-navbar__announcement-track {
+    animation-duration: 24s;
+  }
+
+
+  .sa-navbar__announcement-loop {
+    gap: 0;
+
+    padding-inline: 46px;
   }
 
 
   .sa-navbar__announcement-text {
-    font-size: 0.65rem;
-
-    animation-duration: 17s;
+    font-size: 0.75rem;
   }
 
 
@@ -2362,12 +2480,20 @@ input::placeholder {
   }
 
 
+  .sa-navbar__announcement-track {
+    animation-duration: 22s;
+  }
+
+
+  .sa-navbar__announcement-loop {
+    gap: 0;
+
+    padding-inline: 36px;
+  }
+
+
   .sa-navbar__announcement-text {
-    padding-inline: 28px;
-
-    font-size: 0.61rem;
-
-    animation-duration: 15s;
+    font-size: 0.70rem;
   }
 
 
@@ -2483,16 +2609,24 @@ input::placeholder {
 @media (max-width: 380px) {
 
   .sa-navbar {
-    --sa-announcement-height: 50px;
+    --sa-announcement-height: 48px;
+  }
+
+
+  .sa-navbar__announcement-track {
+    animation-duration: 21s;
+  }
+
+
+  .sa-navbar__announcement-loop {
+    gap: 0;
+
+    padding-inline: 30px;
   }
 
 
   .sa-navbar__announcement-text {
-    padding-inline: 22px;
-
-    font-size: 0.58rem;
-
-    animation-duration: 14s;
+    font-size: 0.66rem;
   }
 
 
@@ -2563,8 +2697,23 @@ input::placeholder {
   }
 
 
-  .sa-navbar__announcement-text {
+  .sa-navbar__announcement-track {
+    width: 100%;
+
+    justify-content: center;
+
     transform: none !important;
   }
+
+
+  .sa-navbar__announcement-loop {
+    display: none;
+  }
+
+
+  .sa-navbar__announcement-loop:first-child {
+    display: inline-flex;
+  }
+
 
 }

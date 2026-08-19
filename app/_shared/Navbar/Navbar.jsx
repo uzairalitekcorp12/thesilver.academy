@@ -1181,8 +1181,11 @@ export default function Navbar() {
         {/* =================================================
             WEBSITE PREVIEW ANNOUNCEMENT
 
-            Clean preview banner containing one message only.
-            The message moves smoothly from left to right.
+            The repeated visual groups are intentional.
+            They create a seamless continuous marquee with no
+            visible start/end gap between message cycles.
+            No separator icon is used — the spacing alone keeps
+            the strip clean and premium.
             ================================================= */}
 
         <div
@@ -1194,18 +1197,35 @@ export default function Navbar() {
 
           <div
             className="sa-navbar__announcement-marquee"
-            aria-label="Website preview announcement"
+            aria-label="Website Preview — Home, Registration, Contact, and Faculty pages are now available. More pages coming soon."
           >
 
-            <span className="sa-navbar__announcement-text">
-              Website Preview — Home, Registration, and Contact pages are now available. More pages coming soon.
-            </span>
-            <span className="sa-navbar__announcement-text">
-              Website Preview — Home, Registration, and Contact pages are now available. More pages coming soon.
-            </span>
-            <span className="sa-navbar__announcement-text">
-              Website Preview — Home, Registration, and Contact pages are now available. More pages coming soon.
-            </span>
+            <div
+              className="sa-navbar__announcement-track"
+              aria-hidden="true"
+            >
+
+              {Array.from({
+                length: 6,
+              }).map((
+                _,
+                index,
+              ) => (
+
+                <span
+                  className="sa-navbar__announcement-loop"
+                  key={index}
+                >
+
+                  <span className="sa-navbar__announcement-text">
+                    Website Preview — Home, Registration, Contact, and Faculty pages are now available. More pages coming soon.
+                  </span>
+
+                </span>
+
+              ))}
+
+            </div>
 
           </div>
 

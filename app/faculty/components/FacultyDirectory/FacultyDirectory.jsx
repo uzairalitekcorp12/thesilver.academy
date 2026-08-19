@@ -2,6 +2,8 @@
 
 import "./FacultyDirectory.css";
 
+import Link from "next/link";
+
 import {
   ArrowUpRight,
   BookOpen,
@@ -173,8 +175,11 @@ function FacultyCard({
   index,
 }) {
   return (
-    <article
+    <Link
       className="sa-faculty-card"
+      href="/registration"
+      aria-label={`Register for classes with ${member.name}`}
+      title={`Register with ${member.name}`}
       data-reveal="up"
       style={{
         "--reveal-delay":
@@ -244,7 +249,7 @@ function FacultyCard({
           />
         </span>
       </div>
-    </article>
+    </Link>
   );
 }
 
@@ -382,39 +387,6 @@ export default function FacultyDirectory() {
               </section>
             );
           })}
-        </div>
-
-
-        {/* ==================================================================
-            FINAL NOTE
-            ================================================================== */}
-
-        <div
-          className="sa-faculty-directory__note"
-          data-reveal="up"
-        >
-          <span className="sa-faculty-directory__note-icon">
-            <Monitor
-              size={21}
-              strokeWidth={1.7}
-            />
-          </span>
-
-          <div>
-            <span>
-              More Faculty Profiles
-            </span>
-
-            <strong>
-              Skill Development &amp; Business Development
-            </strong>
-
-            <p>
-              Additional faculty profiles for skill development and business
-              development courses can be added here once their details are
-              available.
-            </p>
-          </div>
         </div>
       </div>
     </section>

@@ -260,17 +260,97 @@
   text-align: center;
 
   transform:
-    translateZ(0);
+    translate3d(
+      0,
+      0,
+      0
+    );
+
+  backface-visibility:
+    hidden;
+
+  -webkit-backface-visibility:
+    hidden;
+
+  will-change:
+    transform;
 
   transition:
     border-color
-      var(--transition-base),
+      340ms
+      var(--ease-standard),
     background
-      var(--transition-base),
+      340ms
+      var(--ease-standard),
     box-shadow
-      var(--transition-base),
+      420ms
+      var(--ease-smooth),
     transform
-      var(--transition-base);
+      520ms
+      var(--ease-smooth);
+}
+
+
+
+
+/* ========================================================================
+   ISOLATED TILT LAYER
+
+   IMPORTANT JITTER FIX:
+
+   The outer .sa-skill owns the hover elevation.
+   SiteEffects/data-tilt owns ONLY this inner layer.
+
+   This prevents two separate systems from continuously writing to the
+   same transform property, which is the primary cause of hover judder.
+   ======================================================================== */
+
+.sa-skill__tilt {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  width: 100%;
+  min-height: 100%;
+
+  flex: 1 1 auto;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 15px;
+
+  transform:
+    translate3d(
+      0,
+      0,
+      0
+    );
+
+  transform-style:
+    preserve-3d;
+
+  backface-visibility:
+    hidden;
+
+  -webkit-backface-visibility:
+    hidden;
+
+  will-change:
+    transform;
+
+  /*
+   * Short easing keeps mouse-follow tilt responsive,
+   * while still preventing a harsh/snappy feel.
+   */
+  transition:
+    transform
+      170ms
+      ease-out;
 }
 
 
@@ -407,7 +487,11 @@
     var(--shadow-md);
 
   transform:
-    translateY(-8px);
+    translate3d(
+      0,
+      -8px,
+      0
+    );
 }
 
 
@@ -483,8 +567,8 @@
     opacity
       var(--transition-base),
     transform
-      700ms
-      var(--ease-standard);
+      820ms
+      var(--ease-smooth);
 }
 
 
@@ -558,13 +642,25 @@
   box-shadow:
     var(--shadow-xs);
 
+  backface-visibility:
+    hidden;
+
+  -webkit-backface-visibility:
+    hidden;
+
+  will-change:
+    transform;
+
   transition:
     border-color
-      var(--transition-base),
+      320ms
+      var(--ease-standard),
     box-shadow
-      var(--transition-base),
+      420ms
+      var(--ease-smooth),
     transform
-      var(--transition-slow);
+      540ms
+      var(--ease-smooth);
 }
 
 
@@ -608,13 +704,28 @@
   object-fit: contain;
 
   transform:
-    translateZ(0);
+    translate3d(
+      0,
+      0,
+      0
+    );
+
+  backface-visibility:
+    hidden;
+
+  -webkit-backface-visibility:
+    hidden;
+
+  will-change:
+    transform;
 
   transition:
     transform
-      var(--transition-slow),
+      560ms
+      var(--ease-smooth),
     filter
-      var(--transition-base);
+      380ms
+      var(--ease-standard);
 }
 
 
@@ -685,7 +796,11 @@
     var(--shadow-primary);
 
   transform:
-    translateY(-4px)
+    translate3d(
+      0,
+      -4px,
+      0
+    )
     scale(1.025);
 }
 
@@ -702,6 +817,11 @@
 .sa-skill:hover
 .sa-skill__logo img {
   transform:
+    translate3d(
+      0,
+      0,
+      0
+    )
     scale(1.1);
 }
 
@@ -808,13 +928,13 @@
 .sa-skill__explore {
   display: inline-flex;
 
-  max-height: 0;
+  min-height: 20px;
 
   align-items: center;
 
   gap: 5px;
 
-  overflow: hidden;
+  margin-top: 2px;
 
   color:
     var(--color-primary);
@@ -826,18 +946,32 @@
 
   opacity: 0;
 
+  visibility: hidden;
+
+  pointer-events: none;
+
   transform:
-    translateY(5px);
+    translate3d(
+      0,
+      5px,
+      0
+    );
+
+  will-change:
+    transform,
+    opacity;
 
   transition:
-    max-height
-      var(--transition-base),
-    margin
-      var(--transition-base),
     opacity
-      var(--transition-base),
+      280ms
+      var(--ease-standard),
     transform
-      var(--transition-base);
+      420ms
+      var(--ease-smooth),
+    visibility
+      0s
+      linear
+      420ms;
 }
 
 
@@ -868,14 +1002,21 @@
 
 .sa-skill:hover
 .sa-skill__explore {
-  max-height: 22px;
-
-  margin-top: 2px;
-
   opacity: 1;
 
+  visibility: visible;
+
+  pointer-events: auto;
+
   transform:
-    translateY(0);
+    translate3d(
+      0,
+      0,
+      0
+    );
+
+  transition-delay:
+    0s;
 }
 
 
@@ -1192,7 +1333,7 @@
   .sa-skill {
     min-height: 175px;
 
-    gap: 10px;
+    gap: 0;
 
     padding:
       16px
@@ -1201,6 +1342,11 @@
 
     border-radius:
       var(--radius-md);
+  }
+
+
+  .sa-skill__tilt {
+    gap: 10px;
   }
 
 
@@ -1305,6 +1451,12 @@
 
 @media (hover: none) {
 
+  .sa-skill__tilt {
+    transform:
+      none !important;
+  }
+
+
   .sa-skill:hover {
     transform: none;
   }
@@ -1334,6 +1486,7 @@
 ) {
 
   .sa-skill,
+  .sa-skill__tilt,
   .sa-skill *,
   .sa-skill::before,
   .sa-skill::after {

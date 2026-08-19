@@ -111,7 +111,7 @@ export default function Hero() {
 
             <a
               className="secondary-button"
-              href="#admission"
+              href="/contact"
             >
               <span>Book a Demo Class</span>
               <CalendarDays
