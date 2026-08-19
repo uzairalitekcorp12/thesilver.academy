@@ -11,6 +11,7 @@ import {
   FlaskConical,
   GraduationCap,
   Landmark,
+  Monitor,
 } from "lucide-react";
 
 
@@ -294,6 +295,7 @@ export default function FacultyDirectory() {
 
         {/* ==================================================================
             QUICK NAVIGATION
+
             ================================================================== */}
 
         <nav
@@ -388,6 +390,19 @@ export default function FacultyDirectory() {
           })}
         </div>
 
+
+        {/* ==================================================================
+            FINAL NOTE
+            ================================================================== */}
+
+        <div
+          className="sa-faculty-directory__note"
+          data-reveal="up"
+        >
+          
+
+          
+        </div>
       </div>
     </section>
   );
