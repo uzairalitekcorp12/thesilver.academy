@@ -22,24 +22,17 @@
 
 .sa-navbar {
   --sa-announcement-height: 38px;
-  --sa-announcement-scroll-offset: 0px;
 
   position: sticky;
 
   z-index: 1300;
 
   /*
-   * The header is taller than the visible navbar by exactly the
-   * announcement height. A negative sticky offset lets that reserved
-   * announcement area scroll away while the navbar settles at top: 0.
-   * Nothing is removed from normal flow, so there is no layout shift.
+   * The announcement bar and main navbar now behave as one sticky unit.
+   *
+   * Both remain visible while the user scrolls.
    */
-  top:
-    calc(
-      0px
-      -
-      var(--sa-announcement-height)
-    );
+  top: 0;
 
   width: 100%;
 
@@ -77,10 +70,9 @@
    - Slightly larger typography.
    - Slower, more readable movement.
    - True seamless continuation with no start/end break.
-   - Gold separator dot between every repeated message.
    - Premium purple atmosphere and soft gold glow.
    - Hover pauses the ticker.
-   - Scroll-away behaviour remains unchanged.
+   - The purple bar stays sticky together with the navbar.
 
    The six identical groups in Navbar.jsx are intentional.
    The animation moves exactly ONE group width per cycle,
@@ -389,25 +381,6 @@
     1px
     12px
     var(--color-black-soft);
-}
-
-
-/* ========================================================================
-   SCROLL-AWAY BEHAVIOUR
-   ======================================================================== */
-
-.sa-navbar--announcement-hidden
-.sa-navbar__announcement {
-  opacity: 0;
-
-  pointer-events: none;
-
-  transform:
-    translate3d(
-      0,
-      -10px,
-      0
-    );
 }
 
 
@@ -2138,8 +2111,6 @@ input::placeholder {
         var(--nav-height)
         +
         var(--sa-announcement-height)
-        -
-        var(--sa-announcement-scroll-offset)
         +
         10px
       );
@@ -2159,8 +2130,6 @@ input::placeholder {
         var(--nav-height)
         -
         var(--sa-announcement-height)
-        +
-        var(--sa-announcement-scroll-offset)
         -
         28px
       );
@@ -2439,8 +2408,6 @@ input::placeholder {
         var(--nav-height)
         +
         var(--sa-announcement-height)
-        -
-        var(--sa-announcement-scroll-offset)
         +
         10px
       );
@@ -2457,8 +2424,6 @@ input::placeholder {
         var(--nav-height)
         -
         var(--sa-announcement-height)
-        +
-        var(--sa-announcement-scroll-offset)
         -
         28px
       );
@@ -2532,8 +2497,6 @@ input::placeholder {
         var(--nav-height)
         +
         var(--sa-announcement-height)
-        -
-        var(--sa-announcement-scroll-offset)
         +
         8px
       );
@@ -2561,8 +2524,6 @@ input::placeholder {
         var(--nav-height)
         +
         var(--sa-announcement-height)
-        -
-        var(--sa-announcement-scroll-offset)
         +
         8px
       );

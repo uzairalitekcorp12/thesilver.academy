@@ -369,6 +369,26 @@
 
 
 /* ==========================================================================
+   FACULTY CARD NAVIGATION SAFETY
+
+   The complete faculty card is a native internal link to /registration.
+   A native navigation is used intentionally so the Registration page always
+   opens as a fresh document at its top instead of inheriting Faculty scroll.
+
+   These rules preserve the existing card design exactly.
+   ========================================================================== */
+
+.sa-faculty-card:link,
+.sa-faculty-card:visited {
+  color:
+    inherit;
+
+  text-decoration:
+    none;
+}
+
+
+/* ==========================================================================
    CARD VISUAL
    ========================================================================== */
 

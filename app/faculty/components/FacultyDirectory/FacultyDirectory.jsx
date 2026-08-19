@@ -2,8 +2,6 @@
 
 import "./FacultyDirectory.css";
 
-import Link from "next/link";
-
 import {
   ArrowUpRight,
   BookOpen,
@@ -11,7 +9,6 @@ import {
   FlaskConical,
   GraduationCap,
   Landmark,
-  Monitor,
 } from "lucide-react";
 
 
@@ -175,7 +172,7 @@ function FacultyCard({
   index,
 }) {
   return (
-    <Link
+    <a
       className="sa-faculty-card"
       href="/registration"
       aria-label={`Register for classes with ${member.name}`}
@@ -184,6 +181,20 @@ function FacultyCard({
       style={{
         "--reveal-delay":
           `${index * 65}ms`,
+      }}
+      onClick={() => {
+        /*
+         * Explicitly reset the current document before navigation.
+         *
+         * The native internal-page navigation below then loads
+         * /registration as a fresh document at the top instead of
+         * allowing the previous Faculty-page scroll position to carry over.
+         */
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "auto",
+        });
       }}
     >
       <div className="sa-faculty-card__visual">
@@ -249,7 +260,7 @@ function FacultyCard({
           />
         </span>
       </div>
-    </Link>
+    </a>
   );
 }
 
@@ -391,18 +402,6 @@ export default function FacultyDirectory() {
         </div>
 
 
-        {/* ==================================================================
-            FINAL NOTE
-            ================================================================== */}
-
-        <div
-          className="sa-faculty-directory__note"
-          data-reveal="up"
-        >
-          
-
-          
-        </div>
       </div>
     </section>
   );

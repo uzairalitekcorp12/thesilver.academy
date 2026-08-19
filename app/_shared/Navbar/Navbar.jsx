@@ -149,11 +149,6 @@ export default function Navbar() {
   ] = useState(false);
 
 
-  const [
-    announcementHidden,
-    setAnnouncementHidden,
-  ] = useState(false);
-
 
   const [
     activeHref,
@@ -685,43 +680,10 @@ export default function Navbar() {
         const y =
           window.scrollY;
 
-
-        const announcementHeight =
-          navbarRef.current
-            ? Number.parseFloat(
-                window
-                  .getComputedStyle(
-                    navbarRef.current,
-                  )
-                  .getPropertyValue(
-                    "--sa-announcement-height",
-                  ),
-              ) || 38
-            : 38;
-
-
-        const announcementScrollOffset =
-          Math.min(
-            y,
-            announcementHeight,
-          );
-
-
-        navbarRef.current
-          ?.style.setProperty(
-            "--sa-announcement-scroll-offset",
-            `${announcementScrollOffset}px`,
-          );
-
-
         setScrolled(
           y > 10,
         );
 
-
-        setAnnouncementHidden(
-          y > 10,
-        );
 
 
         /*
@@ -1169,10 +1131,6 @@ export default function Navbar() {
           scrolled
             ? "sa-navbar--scrolled"
             : "",
-
-          announcementHidden
-            ? "sa-navbar--announcement-hidden"
-            : "",
         ]
           .filter(Boolean)
           .join(" ")}
@@ -1184,20 +1142,19 @@ export default function Navbar() {
             The repeated visual groups are intentional.
             They create a seamless continuous marquee with no
             visible start/end gap between message cycles.
+            The purple announcement bar stays sticky together with
+            the main navbar while the page scrolls.
             No separator icon is used — the spacing alone keeps
             the strip clean and premium.
             ================================================= */}
 
         <div
           className="sa-navbar__announcement"
-          aria-hidden={
-            announcementHidden
-          }
         >
 
           <div
             className="sa-navbar__announcement-marquee"
-            aria-label="Website Preview — Home, Registration, Contact, and Faculty pages are now available. More pages coming soon."
+            aria-label="Website Preview — Home, Registration, Faculty, and Contact pages are now available. More pages coming soon."
           >
 
             <div
@@ -1218,7 +1175,7 @@ export default function Navbar() {
                 >
 
                   <span className="sa-navbar__announcement-text">
-                    Website Preview — Home, Registration, Contact, and Faculty pages are now available. More pages coming soon.
+                    Website Preview — Home, Registration, Faculty, and Contact pages are now available. More pages coming soon.
                   </span>
 
                 </span>
