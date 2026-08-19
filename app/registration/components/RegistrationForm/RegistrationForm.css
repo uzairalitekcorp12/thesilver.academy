@@ -1,0 +1,861 @@
+/* ========================================================================
+   SILVER ACADEMY — REGISTRATION FORM
+   ======================================================================== */
+
+.sa-registration-form-section {
+  background:
+    linear-gradient(to bottom, var(--color-page), var(--color-surface));
+}
+
+.sa-registration-form-section__layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  align-items: start;
+  gap: 34px;
+  padding-top: 54px;
+  padding-bottom: 96px;
+}
+
+/* ========================================================================
+   SIDEBAR
+   ======================================================================== */
+
+.sa-registration-form-section__sidebar {
+  position: sticky;
+  top: calc(var(--nav-height) + 24px);
+  display: grid;
+  gap: 18px;
+}
+
+.sa-registration-form-section__sidebar-card {
+  position: relative;
+  overflow: hidden;
+  padding: 26px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-dark);
+  color: var(--color-on-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.sa-registration-form-section__sidebar-card::before {
+  position: absolute;
+  right: -68px;
+  bottom: -88px;
+  width: 175px;
+  height: 175px;
+  border: 1px solid var(--color-white-soft);
+  border-radius: 50%;
+  content: "";
+  opacity: 0.35;
+}
+
+.sa-registration-form-section__sidebar-kicker {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  color: var(--color-accent);
+  font-size: 0.61rem;
+  font-weight: 900;
+  letter-spacing: 0.075em;
+}
+
+.sa-registration-form-section__sidebar-card h2 {
+  position: relative;
+  z-index: 2;
+  margin: 8px 0 0;
+  font-family: var(--font-display, var(--font-sans));
+  font-size: 1.52rem;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.sa-registration-form-section__sidebar-copy {
+  position: relative;
+  z-index: 2;
+  margin: 11px 0 0;
+  color: var(--color-on-dark-muted);
+  font-size: 0.74rem;
+  line-height: 1.6;
+}
+
+.sa-registration-form-section__steps {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 4px;
+  margin-top: 25px;
+}
+
+.sa-registration-form-section__step {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  padding: 12px 8px;
+  border-radius: 10px;
+}
+
+.sa-registration-form-section__step > span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid var(--color-white-soft);
+  border-radius: 50%;
+  color: var(--color-on-dark-muted);
+  font-size: 0.57rem;
+  font-weight: 850;
+}
+
+.sa-registration-form-section__step strong,
+.sa-registration-form-section__step small {
+  display: block;
+}
+
+.sa-registration-form-section__step strong {
+  font-size: 0.7rem;
+}
+
+.sa-registration-form-section__step small {
+  margin-top: 2px;
+  color: var(--color-on-dark-muted);
+  font-size: 0.57rem;
+  line-height: 1.35;
+}
+
+.sa-registration-form-section__step.is-active {
+  background: var(--color-white-faint);
+}
+
+.sa-registration-form-section__step.is-active > span {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-dark);
+}
+
+.sa-registration-form-section__help {
+  display: flex;
+  gap: 12px;
+  padding: 19px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-card);
+  box-shadow: var(--shadow-xs);
+}
+
+.sa-registration-form-section__help > span {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--color-primary-pale);
+  color: var(--color-primary);
+}
+
+.sa-registration-form-section__help strong {
+  color: var(--color-text);
+  font-size: 0.74rem;
+}
+
+.sa-registration-form-section__help p {
+  margin: 5px 0 8px;
+  color: var(--color-muted);
+  font-size: 0.65rem;
+  line-height: 1.48;
+}
+
+.sa-registration-form-section__help a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--color-primary);
+  font-size: 0.66rem;
+  font-weight: 850;
+}
+
+/* ========================================================================
+   FORM LAYOUT
+   ======================================================================== */
+
+.sa-registration-form {
+  display: grid;
+  gap: 22px;
+}
+
+.sa-reg-section {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-card);
+  box-shadow: var(--shadow-xs);
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.sa-reg-section:focus-within {
+  border-color: rgba(90, 43, 132, 0.3);
+  box-shadow: var(--shadow-sm);
+}
+
+.sa-reg-section__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 22px 26px;
+  border-bottom: 1px solid var(--color-border);
+  background:
+    linear-gradient(135deg, var(--color-surface), var(--color-card));
+}
+
+.sa-reg-section__icon {
+  display: grid;
+  width: 43px;
+  height: 43px;
+  flex: 0 0 43px;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--color-primary-pale);
+  color: var(--color-primary);
+}
+
+.sa-reg-section__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 0.59rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sa-reg-section__eyebrow span {
+  color: var(--color-accent-deep);
+}
+
+.sa-reg-section__head h2 {
+  margin: 5px 0 0;
+  color: var(--color-text);
+  font-family: var(--font-display, var(--font-sans));
+  font-size: 1.24rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.sa-reg-section__description {
+  margin: 5px 0 0;
+  color: var(--color-muted);
+  font-size: 0.7rem;
+  line-height: 1.52;
+}
+
+.sa-reg-section__body {
+  padding: 28px;
+}
+
+/* ========================================================================
+   INPUT FIELDS
+   ======================================================================== */
+
+.sa-reg-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 18px;
+}
+
+.sa-reg-field {
+  display: grid;
+  gap: 8px;
+}
+
+.sa-reg-field--full {
+  grid-column: 1 / -1;
+}
+
+.sa-reg-field__label {
+  color: var(--color-text-soft);
+  font-size: 0.7rem;
+  font-weight: 750;
+}
+
+.sa-reg-field__label b {
+  margin-left: 3px;
+  color: var(--color-accent-deep);
+}
+
+.sa-reg-field input,
+.sa-reg-field select,
+.sa-reg-field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 10px;
+  outline: 0;
+  background: var(--color-card);
+  color: var(--color-text);
+  font-size: 0.77rem;
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    background var(--transition-base);
+}
+
+.sa-reg-field select {
+  cursor: pointer;
+}
+
+.sa-reg-field input::placeholder,
+.sa-reg-field textarea::placeholder {
+  color: var(--color-muted-light);
+}
+
+.sa-reg-field input:hover,
+.sa-reg-field select:hover,
+.sa-reg-field textarea:hover {
+  border-color: var(--color-primary-soft);
+}
+
+.sa-reg-field input:focus,
+.sa-reg-field select:focus,
+.sa-reg-field textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-purple-faint);
+}
+
+.sa-reg-subsection {
+  margin-top: 27px;
+  padding-top: 23px;
+  border-top: 1px solid var(--color-border);
+}
+
+.sa-reg-subsection__heading {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 16px;
+  color: var(--color-primary);
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+/* ========================================================================
+   MODE OF LEARNING
+   ======================================================================== */
+
+.sa-reg-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.sa-reg-choice-card {
+  position: relative;
+  display: flex;
+  min-height: 105px;
+  cursor: pointer;
+  align-items: center;
+  gap: 13px;
+  padding: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-card);
+  transition:
+    border-color var(--transition-base),
+    background var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.sa-reg-choice-card:hover {
+  border-color: var(--color-primary-soft);
+  box-shadow: var(--shadow-xs);
+  transform: translateY(-2px);
+}
+
+.sa-reg-choice-card > input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sa-reg-choice-card__check {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  width: 21px;
+  height: 21px;
+  place-items: center;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 50%;
+  color: transparent;
+}
+
+.sa-reg-choice-card__icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  place-items: center;
+  border-radius: 13px;
+  background: var(--color-primary-pale);
+  color: var(--color-primary);
+}
+
+.sa-reg-choice-card__copy strong,
+.sa-reg-choice-card__copy small {
+  display: block;
+}
+
+.sa-reg-choice-card__copy strong {
+  color: var(--color-text);
+  font-size: 0.79rem;
+}
+
+.sa-reg-choice-card__copy small {
+  margin-top: 4px;
+  color: var(--color-muted);
+  font-size: 0.63rem;
+  line-height: 1.42;
+}
+
+.sa-reg-choice-card:has(input:checked) {
+  border-color: var(--color-primary);
+  background:
+    linear-gradient(135deg, var(--color-primary-pale), var(--color-card));
+  box-shadow: 0 12px 30px var(--color-primary-shadow);
+}
+
+.sa-reg-choice-card:has(input:checked) .sa-reg-choice-card__check {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-on-dark);
+}
+
+/* ========================================================================
+   PROGRAM SELECTION
+   ======================================================================== */
+
+.sa-reg-programs {
+  display: grid;
+  gap: 10px;
+}
+
+.sa-reg-program {
+  position: relative;
+  display: grid;
+  min-height: 74px;
+  cursor: pointer;
+  grid-template-columns: 24px minmax(0, 1fr) 20px;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  transition:
+    border-color var(--transition-base),
+    background var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.sa-reg-program:hover {
+  border-color: var(--color-primary-soft);
+  box-shadow: var(--shadow-xs);
+  transform: translateX(3px);
+}
+
+.sa-reg-program > input {
+  position: absolute;
+  opacity: 0;
+}
+
+.sa-reg-program__radio {
+  display: grid;
+  width: 21px;
+  height: 21px;
+  place-items: center;
+  border: 2px solid var(--color-border-strong);
+  border-radius: 50%;
+}
+
+.sa-reg-program__radio span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.sa-reg-program__copy strong,
+.sa-reg-program__copy small {
+  display: block;
+}
+
+.sa-reg-program__copy strong {
+  color: var(--color-text);
+  font-size: 0.75rem;
+}
+
+.sa-reg-program__copy small {
+  margin-top: 3px;
+  color: var(--color-muted);
+  font-size: 0.62rem;
+  line-height: 1.42;
+}
+
+.sa-reg-program__arrow {
+  color: var(--color-muted-light);
+  transition:
+    color var(--transition-base),
+    transform var(--transition-base);
+}
+
+.sa-reg-program:has(input:checked) {
+  border-color: var(--color-primary);
+  background:
+    linear-gradient(90deg, var(--color-primary-pale), var(--color-card));
+  box-shadow: 0 10px 28px var(--color-primary-shadow);
+}
+
+.sa-reg-program:has(input:checked) .sa-reg-program__radio {
+  border-color: var(--color-primary);
+}
+
+.sa-reg-program:has(input:checked) .sa-reg-program__radio span {
+  background: var(--color-primary);
+}
+
+.sa-reg-program:has(input:checked) .sa-reg-program__arrow {
+  color: var(--color-primary);
+  transform: translateX(3px);
+}
+
+/* ========================================================================
+   EXAM SESSION
+   ======================================================================== */
+
+.sa-reg-exam-session {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 13px;
+  background: var(--color-surface);
+}
+
+.sa-reg-exam-session__heading {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 16px;
+}
+
+.sa-reg-exam-session__heading > span {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--color-accent-pale);
+  color: var(--color-accent-deep);
+}
+
+.sa-reg-exam-session__heading strong,
+.sa-reg-exam-session__heading small {
+  display: block;
+}
+
+.sa-reg-exam-session__heading strong {
+  color: var(--color-text);
+  font-size: 0.74rem;
+}
+
+.sa-reg-exam-session__heading small {
+  margin-top: 2px;
+  color: var(--color-muted);
+  font-size: 0.61rem;
+}
+
+/* ========================================================================
+   REFERRAL
+   ======================================================================== */
+
+.sa-reg-referrals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.sa-reg-referral {
+  position: relative;
+  display: flex;
+  min-height: 48px;
+  cursor: pointer;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  color: var(--color-text-soft);
+  font-size: 0.69rem;
+  font-weight: 700;
+  transition:
+    border-color var(--transition-base),
+    background var(--transition-base),
+    transform var(--transition-base);
+}
+
+.sa-reg-referral:hover {
+  border-color: var(--color-primary-soft);
+  transform: translateY(-1px);
+}
+
+.sa-reg-referral input {
+  position: absolute;
+  opacity: 0;
+}
+
+.sa-reg-referral > span {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-border-strong);
+  border-radius: 50%;
+}
+
+.sa-reg-referral:has(input:checked) {
+  border-color: var(--color-primary);
+  background: var(--color-primary-pale);
+}
+
+.sa-reg-referral:has(input:checked) > span {
+  border: 4px solid var(--color-primary);
+  background: var(--color-card);
+}
+
+.sa-reg-other {
+  margin-top: 16px;
+}
+
+/* ========================================================================
+   FINAL CTA
+   ======================================================================== */
+
+.sa-registration-form__submit {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-primary-wide);
+  color: var(--color-on-dark);
+  box-shadow: var(--shadow-primary);
+}
+
+.sa-registration-form__submit::after {
+  position: absolute;
+  top: -90px;
+  right: -65px;
+  width: 175px;
+  height: 175px;
+  border: 1px solid var(--color-white-soft);
+  border-radius: 50%;
+  content: "";
+  opacity: 0.35;
+}
+
+.sa-registration-form__submit-copy,
+.sa-registration-form__submit-actions {
+  position: relative;
+  z-index: 2;
+}
+
+.sa-registration-form__submit-copy {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.sa-registration-form__submit-copy > span {
+  display: grid;
+  width: 45px;
+  height: 45px;
+  flex: 0 0 45px;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--color-white-soft);
+}
+
+.sa-registration-form__submit-copy strong {
+  display: block;
+  font-size: 0.82rem;
+}
+
+.sa-registration-form__submit-copy p {
+  margin: 4px 0 0;
+  color: var(--color-on-dark-muted);
+  font-size: 0.64rem;
+}
+
+.sa-registration-form__submit-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sa-registration-form__save {
+  display: inline-flex;
+  min-height: 46px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 17px;
+  border: 1px solid var(--color-white-soft);
+  border-radius: var(--radius-pill);
+  background: var(--color-white-faint);
+  color: var(--color-on-dark);
+  font-size: 0.67rem;
+  font-weight: 800;
+  transition:
+    background var(--transition-base),
+    transform var(--transition-base);
+}
+
+.sa-registration-form__save:hover {
+  background: var(--color-white-soft);
+  transform: translateY(-2px);
+}
+
+.sa-registration-form__submit-button {
+  border: 0;
+  cursor: pointer;
+}
+
+/* ========================================================================
+   TABLET
+   ======================================================================== */
+
+@media (max-width: 960px) {
+  .sa-registration-form-section__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sa-registration-form-section__sidebar {
+    position: static;
+    grid-template-columns: minmax(0, 1.3fr) minmax(220px, 0.7fr);
+  }
+
+  .sa-registration-form-section__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ========================================================================
+   MOBILE
+   ======================================================================== */
+
+@media (max-width: 650px) {
+  .sa-registration-form-section__layout {
+    gap: 18px;
+    padding-top: 28px;
+    padding-bottom: 64px;
+  }
+
+  .sa-registration-form-section__sidebar {
+    display: block;
+  }
+
+  .sa-registration-form-section__sidebar-card {
+    padding: 20px;
+  }
+
+  .sa-registration-form-section__steps {
+    display: none;
+  }
+
+  .sa-registration-form-section__help {
+    margin-top: 12px;
+  }
+
+  .sa-reg-section__head {
+    gap: 11px;
+    padding: 18px 17px;
+  }
+
+  .sa-reg-section__icon {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .sa-reg-section__head h2 {
+    font-size: 1.07rem;
+  }
+
+  .sa-reg-section__description {
+    font-size: 0.65rem;
+  }
+
+  .sa-reg-section__body {
+    padding: 18px;
+  }
+
+  .sa-reg-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .sa-reg-field--full {
+    grid-column: auto;
+  }
+
+  .sa-reg-field input,
+  .sa-reg-field select,
+  .sa-reg-field textarea {
+    min-height: 49px;
+    font-size: 0.79rem;
+  }
+
+  .sa-reg-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sa-reg-choice-card {
+    min-height: 92px;
+  }
+
+  .sa-reg-program {
+    grid-template-columns: 22px minmax(0, 1fr);
+    padding: 13px;
+  }
+
+  .sa-reg-program__arrow {
+    display: none;
+  }
+
+  .sa-reg-referrals {
+    grid-template-columns: 1fr;
+  }
+
+  .sa-registration-form__submit {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+  }
+
+  .sa-registration-form__submit-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .sa-registration-form__save,
+  .sa-registration-form__submit-button {
+    width: 100%;
+  }
+}

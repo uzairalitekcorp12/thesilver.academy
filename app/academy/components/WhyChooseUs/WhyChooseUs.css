@@ -1,0 +1,1432 @@
+/* ========================================================================
+   SILVER ACADEMY
+   WHY CHOOSE US
+   ========================================================================
+
+   REFERENCE STRUCTURE
+
+   LEFT SIDE
+   ---------
+   Heading
+   Description
+   Benefits
+   CTA
+
+   RIGHT SIDE
+   ----------
+   Large static classroom image
+   Statistics floating underneath / over image
+
+   KPI ANIMATION
+   -------------
+   Starts visibly from zero.
+   Animated numbers increase.
+   Ends at configured final numbers.
+
+   All colors continue coming from app/globals.css.
+   ======================================================================== */
+
+
+/* ========================================================================
+   SECTION
+   ======================================================================== */
+
+.sa-why {
+  position: relative;
+
+  isolation: isolate;
+
+  overflow: hidden;
+
+  padding:
+    clamp(
+      32px,
+      5vw,
+      68px
+    )
+    0
+    calc(
+      var(--section-space)
+      -
+      10px
+    );
+
+  background:
+    var(--color-page);
+}
+
+
+/* ========================================================================
+   BACKGROUND DECORATION
+   ======================================================================== */
+
+.sa-why__background-orb {
+  position: absolute;
+
+  z-index: -1;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  opacity: 0.7;
+}
+
+
+.sa-why__background-orb--one {
+  top: 8%;
+
+  left: -180px;
+
+  width: 330px;
+  height: 330px;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--color-accent-pale),
+      var(--color-transparent)
+      70%
+    );
+}
+
+
+.sa-why__background-orb--two {
+  right: -230px;
+
+  bottom: -100px;
+
+  width: 450px;
+  height: 450px;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--color-primary-pale),
+      var(--color-transparent)
+      70%
+    );
+}
+
+
+/* ========================================================================
+   MAIN LAYOUT
+   ======================================================================== */
+
+.sa-why__grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      245px,
+      0.7fr
+    )
+    minmax(
+      0,
+      1.75fr
+    );
+
+  align-items: center;
+
+  gap:
+    clamp(
+      32px,
+      5vw,
+      68px
+    );
+}
+
+
+/* ========================================================================
+   LEFT COPY
+   ======================================================================== */
+
+.sa-why__copy {
+  position: relative;
+
+  z-index: 5;
+
+  padding-block:
+    clamp(
+      18px,
+      3vw,
+      38px
+    );
+}
+
+
+.sa-why__title {
+  max-width: 390px;
+}
+
+
+.sa-why__title span {
+  color:
+    var(--color-text);
+}
+
+
+/* ========================================================================
+   TITLE ACCENT
+   ======================================================================== */
+
+.sa-why__line {
+  position: relative;
+
+  width: 48px;
+  height: 3px;
+
+  margin-top: 15px;
+
+  overflow: hidden;
+
+  border-radius:
+    var(--radius-pill);
+
+  background:
+    var(--color-border);
+}
+
+
+.sa-why__line::after {
+  position: absolute;
+
+  inset: 0;
+
+  width: 72%;
+
+  border-radius: inherit;
+
+  background:
+    var(--color-accent);
+
+  content: "";
+}
+
+
+/* ========================================================================
+   DESCRIPTION
+   ======================================================================== */
+
+.sa-why__intro {
+  max-width: 370px;
+
+  margin:
+    17px
+    0
+    0;
+
+  color:
+    var(--color-muted);
+
+  font-size: 0.84rem;
+
+  line-height: 1.75;
+}
+
+
+/* ========================================================================
+   BENEFIT LIST
+   ======================================================================== */
+
+.sa-why__list {
+  display: grid;
+
+  gap: 11px;
+
+  margin:
+    22px
+    0
+    0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.sa-why__list li {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  color:
+    var(--color-text-soft);
+
+  font-size: 0.74rem;
+
+  font-weight:
+    var(--font-weight-semibold);
+
+  line-height: 1.5;
+}
+
+
+/* ========================================================================
+   CHECK ICON
+   ======================================================================== */
+
+.sa-why__check {
+  display: grid;
+
+  width: 19px;
+  height: 19px;
+
+  flex:
+    0
+    0
+    19px;
+
+  place-items: center;
+
+  margin-top: 1px;
+
+  border:
+    1px solid
+    var(--color-accent);
+
+  border-radius: 50%;
+
+  background:
+    var(--color-accent-pale);
+
+  color:
+    var(--color-accent-deep);
+
+  transition:
+    background
+      var(--transition-fast),
+    color
+      var(--transition-fast),
+    transform
+      var(--transition-fast);
+}
+
+
+.sa-why__list li:hover
+.sa-why__check {
+  background:
+    var(--color-accent);
+
+  color:
+    var(--color-text);
+
+  transform:
+    scale(1.08)
+    rotate(-6deg);
+}
+
+
+/* ========================================================================
+   CTA
+   ======================================================================== */
+
+.sa-why__button {
+  margin-top: 24px;
+}
+
+
+/* ========================================================================
+   RIGHT VISUAL WRAPPER
+   ======================================================================== */
+
+.sa-why__visual-wrap {
+  position: relative;
+
+  min-width: 0;
+
+  /*
+   * Reserve bottom space for KPI overlay.
+   */
+
+  padding:
+    16px
+    0
+    78px
+    15px;
+}
+
+
+/* ========================================================================
+   STATIC IMAGE VISUAL
+
+   aspect-ratio avoids image distortion.
+
+   Image dimensions automatically respond to screen size.
+   ======================================================================== */
+
+.sa-why__visual {
+  position: relative;
+
+  width: 100%;
+
+  min-width: 0;
+
+  aspect-ratio:
+    16 / 8.6;
+}
+
+
+/* ========================================================================
+   IMAGE FRAME
+   ======================================================================== */
+
+.sa-why__image-frame {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--color-border);
+
+  border-radius:
+    105px
+    var(--radius-sm)
+    var(--radius-sm)
+    var(--radius-sm);
+
+  background:
+    var(--color-surface-strong);
+
+  box-shadow:
+    var(--shadow-md);
+
+  transform:
+    translateZ(0);
+}
+
+
+/* ========================================================================
+   IMAGE
+   ======================================================================== */
+
+.sa-why__image {
+  object-fit: cover;
+
+  transform:
+    scale(1.001);
+
+  transition:
+    transform
+      1100ms
+      var(--ease-smooth);
+}
+
+
+.sa-why__visual:hover
+.sa-why__image {
+  transform:
+    scale(1.025);
+}
+
+
+/* ========================================================================
+   IMAGE OVERLAY
+   ======================================================================== */
+
+.sa-why__image-overlay {
+  position: absolute;
+
+  z-index: 3;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-transparent)
+        56%,
+      var(--color-black-faint)
+    );
+}
+
+
+/* ========================================================================
+   PURPLE FRAME ACCENT
+   ======================================================================== */
+
+.sa-why__image-accent {
+  position: absolute;
+
+  z-index: -1;
+
+  top: -8px;
+
+  right: 10px;
+
+  left: 55px;
+
+  height: 3px;
+
+  border-radius:
+    var(--radius-pill);
+
+  background:
+    var(--gradient-primary-wide);
+
+  opacity: 0.82;
+}
+
+
+/* ========================================================================
+   IMAGE LABEL
+   ======================================================================== */
+
+.sa-why__image-label {
+  position: absolute;
+
+  z-index: 7;
+
+  top: 18px;
+
+  right: 18px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding:
+    8px
+    12px;
+
+  border:
+    1px solid
+    var(--color-white-soft);
+
+  border-radius:
+    var(--radius-pill);
+
+  background:
+    var(--color-glass);
+
+  color:
+    var(--color-text-soft);
+
+  box-shadow:
+    var(--shadow-xs);
+
+  font-size: 0.63rem;
+
+  font-weight:
+    var(--font-weight-bold);
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+}
+
+
+.sa-why__image-label-icon {
+  display: grid;
+
+  width: 25px;
+  height: 25px;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background:
+    var(--color-primary-pale);
+
+  color:
+    var(--color-primary);
+}
+
+
+/* ========================================================================
+   FLOATING LEARNING BADGE
+   ======================================================================== */
+
+.sa-why__floating-badge {
+  position: absolute;
+
+  z-index: 8;
+
+  top: 22px;
+
+  left: 45px;
+
+  display: flex;
+
+  max-width: 275px;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding:
+    9px
+    12px;
+
+  border:
+    1px solid
+    var(--color-white-soft);
+
+  border-radius:
+    var(--radius-pill);
+
+  background:
+    var(--color-dark-glass);
+
+  color:
+    var(--color-on-dark-muted);
+
+  box-shadow:
+    var(--shadow-sm);
+
+  font-size: 0.65rem;
+
+  font-weight:
+    var(--font-weight-semibold);
+
+  line-height: 1.4;
+
+  backdrop-filter:
+    blur(14px);
+
+  -webkit-backdrop-filter:
+    blur(14px);
+}
+
+
+.sa-why__floating-badge strong {
+  color:
+    var(--color-on-dark);
+}
+
+
+.sa-why__floating-badge-icon {
+  display: grid;
+
+  width: 30px;
+  height: 30px;
+
+  flex:
+    0
+    0
+    30px;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background:
+    var(--color-white-faint);
+
+  color:
+    var(--color-accent);
+}
+
+
+/* ========================================================================
+   KPI FLOATING PANEL
+
+   Desktop behavior matches reference:
+   KPI card overlaps lower part of classroom image.
+   ======================================================================== */
+
+.sa-why__stats {
+  position: absolute;
+
+  z-index: 20;
+
+  right: -14px;
+
+  bottom: 7px;
+
+  left: 58px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--color-border);
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    var(--color-glass);
+
+  box-shadow:
+    var(--shadow-lg);
+
+  backdrop-filter:
+    blur(17px);
+
+  -webkit-backdrop-filter:
+    blur(17px);
+}
+
+
+/* ========================================================================
+   KPI CARD
+   ======================================================================== */
+
+.sa-stat {
+  position: relative;
+
+  display: flex;
+
+  min-width: 0;
+
+  min-height: 94px;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding:
+    18px
+    15px;
+
+  transition:
+    background
+      var(--transition-base),
+    transform
+      var(--transition-base);
+}
+
+
+/* Divider */
+
+.sa-stat + .sa-stat::before {
+  position: absolute;
+
+  top: 20%;
+
+  bottom: 20%;
+
+  left: 0;
+
+  width: 1px;
+
+  background:
+    var(--color-border);
+
+  content: "";
+}
+
+
+.sa-stat:hover {
+  background:
+    var(--color-primary-pale);
+
+  transform:
+    translateY(-3px);
+}
+
+
+/* ========================================================================
+   KPI ICON
+   ======================================================================== */
+
+.sa-stat__icon {
+  display: grid;
+
+  width: 40px;
+  height: 40px;
+
+  flex:
+    0
+    0
+    40px;
+
+  place-items: center;
+
+  border-radius:
+    var(--radius-sm);
+
+  background:
+    var(--color-primary-pale);
+
+  color:
+    var(--color-primary);
+
+  transition:
+    background
+      var(--transition-fast),
+    color
+      var(--transition-fast),
+    transform
+      var(--transition-fast),
+    box-shadow
+      var(--transition-fast);
+}
+
+
+.sa-stat:hover
+.sa-stat__icon {
+  background:
+    var(--color-primary);
+
+  color:
+    var(--color-on-dark);
+
+  box-shadow:
+    var(--shadow-primary);
+
+  transform:
+    translateY(-2px)
+    rotate(-3deg);
+}
+
+
+/* ========================================================================
+   KPI CONTENT
+   ======================================================================== */
+
+.sa-stat__copy {
+  min-width: 0;
+}
+
+
+.sa-stat__copy > span {
+  display: block;
+
+  margin-top: 5px;
+
+  color:
+    var(--color-text-soft);
+
+  font-size: 0.61rem;
+
+  font-weight:
+    var(--font-weight-bold);
+
+  line-height: 1.4;
+}
+
+
+/* ========================================================================
+   ANIMATED NUMBER
+
+   tabular-nums is IMPORTANT.
+
+   Every numeral keeps the same character width, preventing
+   text from horizontally jumping while counting.
+   ======================================================================== */
+
+.sa-stat__value {
+  display: inline-flex;
+
+  min-width: 0;
+
+  align-items: flex-start;
+
+  color:
+    var(--color-primary);
+
+  font-family:
+    var(--font-heading);
+
+  font-size:
+    clamp(
+      1.2rem,
+      1.65vw,
+      1.48rem
+    );
+
+  font-variant-numeric:
+    tabular-nums;
+
+  font-weight:
+    var(--font-weight-black);
+
+  letter-spacing:
+    -0.035em;
+
+  line-height: 1;
+
+  transform-origin:
+    left center;
+}
+
+
+/* Number */
+
+.sa-stat__number {
+  display: inline-block;
+
+  /*
+   * Prevent layout shifting during:
+   *
+   * 9
+   * 80
+   * 233
+   * 800
+   */
+
+  min-width: 1ch;
+}
+
+
+/* + / % */
+
+.sa-stat__suffix {
+  display: inline-block;
+
+  margin-left: 1px;
+
+  color:
+    var(--color-primary);
+
+  font-size: 0.72em;
+
+  font-weight:
+    inherit;
+
+  letter-spacing: 0;
+
+  line-height: 1;
+}
+
+
+/* ========================================================================
+   ACTIVE COUNTING EFFECT
+
+   Small pulse tells the user that these numbers are actively changing.
+   ======================================================================== */
+
+.sa-stat__value.is-counting {
+  animation:
+    saKpiCountPulse
+    300ms
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+@keyframes saKpiCountPulse {
+
+  from {
+    opacity: 0.8;
+
+    transform:
+      translateY(1px)
+      scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+/* ========================================================================
+   FINAL NUMBER POP
+   ======================================================================== */
+
+.sa-stat__value.is-complete {
+  animation:
+    saKpiFinish
+    480ms
+    var(--ease-spring)
+    both;
+}
+
+
+@keyframes saKpiFinish {
+
+  0% {
+    transform:
+      scale(0.96);
+  }
+
+  55% {
+    transform:
+      scale(1.09);
+  }
+
+  100% {
+    transform:
+      scale(1);
+  }
+
+}
+
+
+/* ========================================================================
+   KPI ICON START ANIMATION
+   ======================================================================== */
+
+.sa-why__stats.has-started
+.sa-stat__icon {
+  animation:
+    saKpiIconAppear
+    520ms
+    var(--ease-spring)
+    both;
+}
+
+
+.sa-why__stats.has-started
+.sa-stat:nth-child(2)
+.sa-stat__icon {
+  animation-delay:
+    100ms;
+}
+
+
+.sa-why__stats.has-started
+.sa-stat:nth-child(3)
+.sa-stat__icon {
+  animation-delay:
+    200ms;
+}
+
+
+.sa-why__stats.has-started
+.sa-stat:nth-child(4)
+.sa-stat__icon {
+  animation-delay:
+    300ms;
+}
+
+
+@keyframes saKpiIconAppear {
+
+  from {
+    opacity: 0.25;
+
+    transform:
+      translateY(8px)
+      scale(0.82);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+/* ========================================================================
+   MEDIUM DESKTOP
+   ======================================================================== */
+
+@media (max-width: 1100px) {
+
+  .sa-why__grid {
+    grid-template-columns:
+      minmax(
+        220px,
+        0.72fr
+      )
+      minmax(
+        0,
+        1.6fr
+      );
+
+    gap: 34px;
+  }
+
+
+  .sa-why__stats {
+    left: 34px;
+  }
+
+
+  .sa-stat {
+    gap: 8px;
+
+    padding:
+      15px
+      10px;
+  }
+
+
+  .sa-stat__icon {
+    width: 35px;
+    height: 35px;
+
+    flex-basis: 35px;
+  }
+
+
+  .sa-stat__value {
+    font-size: 1.18rem;
+  }
+
+}
+
+
+/* ========================================================================
+   TABLET
+   ======================================================================== */
+
+@media (max-width: 960px) {
+
+  .sa-why {
+    padding-top: 32px;
+  }
+
+
+  .sa-why__grid {
+    grid-template-columns: 1fr;
+
+    gap: 24px;
+  }
+
+
+  .sa-why__copy {
+    max-width: 650px;
+
+    padding-bottom: 8px;
+  }
+
+
+  .sa-why__intro {
+    max-width: 520px;
+  }
+
+
+  .sa-why__visual-wrap {
+    padding:
+      12px
+      0
+      74px;
+  }
+
+
+  .sa-why__visual {
+    aspect-ratio:
+      16 / 9;
+  }
+
+
+  .sa-why__stats {
+    right: 22px;
+
+    left: 22px;
+  }
+
+}
+
+
+/* ========================================================================
+   SMALL TABLET
+   ======================================================================== */
+
+@media (max-width: 720px) {
+
+  .sa-why__visual-wrap {
+    padding-bottom: 0;
+  }
+
+
+  .sa-why__visual {
+    aspect-ratio:
+      16 / 10;
+  }
+
+
+  .sa-why__image-frame {
+    border-radius:
+      68px
+      var(--radius-sm)
+      var(--radius-sm)
+      var(--radius-sm);
+  }
+
+
+  /* ======================================================================
+     KPI PANEL CHANGES TO 2 × 2
+     ====================================================================== */
+
+  .sa-why__stats {
+    position: relative;
+
+    right: auto;
+    bottom: auto;
+    left: auto;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+
+    margin-top: 14px;
+  }
+
+
+  .sa-stat:nth-child(3)::before {
+    display: none;
+  }
+
+
+  .sa-stat:nth-child(n + 3) {
+    border-top:
+      1px solid
+      var(--color-border);
+  }
+
+
+  .sa-why__floating-badge {
+    display: none;
+  }
+
+}
+
+
+/* ========================================================================
+   MOBILE
+   ======================================================================== */
+
+@media (max-width: 520px) {
+
+  .sa-why {
+    padding:
+      28px
+      0
+      var(--section-space);
+  }
+
+
+  .sa-why__copy {
+    padding-block: 8px;
+  }
+
+
+  .sa-why__title br {
+    display: none;
+  }
+
+
+  .sa-why__intro {
+    font-size: 0.8rem;
+
+    line-height: 1.7;
+  }
+
+
+  .sa-why__list {
+    gap: 10px;
+
+    margin-top: 18px;
+  }
+
+
+  .sa-why__list li {
+    font-size: 0.71rem;
+  }
+
+
+  .sa-why__visual-wrap {
+    margin-top: 14px;
+  }
+
+
+  /* ======================================================================
+     MOBILE IMAGE
+
+     Taller aspect ratio prevents the image from becoming too thin.
+     ====================================================================== */
+
+  .sa-why__visual {
+    aspect-ratio:
+      4 / 3;
+  }
+
+
+  .sa-why__image-frame {
+    border-radius:
+      48px
+      var(--radius-sm)
+      var(--radius-sm)
+      var(--radius-sm);
+  }
+
+
+  .sa-why__image-label {
+    top: 12px;
+
+    right: 12px;
+
+    padding:
+      6px
+      9px;
+
+    font-size: 0.58rem;
+  }
+
+
+  .sa-why__image-label-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+
+  /* ======================================================================
+     MOBILE KPI CARDS
+     ====================================================================== */
+
+  .sa-why__stats {
+    border-radius:
+      var(--radius-md);
+  }
+
+
+  .sa-stat {
+    min-height: 86px;
+
+    gap: 9px;
+
+    padding:
+      13px
+      10px;
+  }
+
+
+  .sa-stat__icon {
+    width: 32px;
+    height: 32px;
+
+    flex-basis: 32px;
+  }
+
+
+  .sa-stat__icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+
+  .sa-stat__value {
+    font-size: 1.1rem;
+  }
+
+
+  .sa-stat__copy > span {
+    font-size: 0.58rem;
+  }
+
+}
+
+
+/* ========================================================================
+   SMALL MOBILE
+   ======================================================================== */
+
+@media (max-width: 380px) {
+
+  .sa-why__visual {
+    aspect-ratio:
+      4 / 3;
+  }
+
+
+  /*
+   * Preserve icon while removing unnecessary
+   * label text on very narrow phones.
+   */
+
+  .sa-why__image-label
+  > span:last-child {
+    display: none;
+  }
+
+
+  .sa-why__image-label {
+    padding: 5px;
+  }
+
+
+  .sa-stat {
+    gap: 7px;
+
+    padding:
+      11px
+      7px;
+  }
+
+
+  .sa-stat__value {
+    font-size: 1rem;
+  }
+
+
+  .sa-stat__copy > span {
+    font-size: 0.54rem;
+  }
+
+}
+
+
+/* ========================================================================
+   TOUCH DEVICES
+   ======================================================================== */
+
+@media (hover: none) {
+
+  .sa-why__visual:hover
+  .sa-why__image {
+    transform:
+      scale(1.001);
+  }
+
+}
+
+
+/* ========================================================================
+   REDUCED MOTION
+   ======================================================================== */
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+
+  .sa-why__image,
+  .sa-stat,
+  .sa-stat__icon,
+  .sa-stat__value {
+    transition-duration:
+      0.01ms !important;
+  }
+
+
+  .sa-stat__value.is-counting,
+  .sa-stat__value.is-complete,
+  .sa-why__stats.has-started
+  .sa-stat__icon {
+    animation: none !important;
+  }
+
+}

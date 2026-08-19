@@ -1,0 +1,61 @@
+[data-reveal] {
+  opacity: 0;
+  transition:
+    opacity 720ms var(--ease-standard),
+    transform 720ms var(--ease-standard),
+    filter 720ms var(--ease-standard);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal="up"] {
+  transform: translateY(30px);
+}
+
+[data-reveal="left"] {
+  transform: translateX(-34px);
+}
+
+[data-reveal="right"] {
+  transform: translateX(34px);
+}
+
+[data-reveal="scale"] {
+  transform: scale(0.96);
+  filter: blur(4px);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+}
+
+[data-tilt] {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+[data-parallax] {
+  --parallax-y: 0px;
+  transform: translate3d(0, var(--parallax-y), 0);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  [data-tilt],
+  [data-parallax] {
+    transform: none;
+  }
+}

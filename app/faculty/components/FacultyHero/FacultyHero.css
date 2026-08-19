@@ -1,0 +1,641 @@
+/* ==========================================================================
+   SILVER ACADEMY — FACULTY HERO
+   ==========================================================================
+
+   The page continues using the centralized Silver Academy design system
+   from app/globals.css.
+
+   No separate page-specific color palette is introduced here.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   SECTION
+   ========================================================================== */
+
+.sa-faculty-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding:
+    clamp(68px, 8vw, 108px)
+    0
+    clamp(68px, 7vw, 94px);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--color-primary-pale),
+      var(--color-page) 42%,
+      var(--color-page) 100%
+    );
+}
+
+
+/* ==========================================================================
+   DECORATION
+   ========================================================================== */
+
+.sa-faculty-hero__ambient {
+  position: absolute;
+  z-index: -2;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.sa-faculty-hero__ambient--one {
+  top: -230px;
+  right: -145px;
+
+  width: 500px;
+  height: 500px;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--color-primary-soft),
+      var(--color-transparent) 69%
+    );
+
+  opacity: 0.42;
+}
+
+
+.sa-faculty-hero__ambient--two {
+  left: -170px;
+  bottom: -280px;
+
+  width: 520px;
+  height: 520px;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--color-accent-soft),
+      var(--color-transparent) 70%
+    );
+
+  opacity: 0.43;
+}
+
+
+.sa-faculty-hero__dots {
+  position: absolute;
+  z-index: -1;
+
+  right: 7%;
+  bottom: 19%;
+
+  width: 94px;
+  height: 94px;
+
+  opacity: 0.38;
+
+  background-image:
+    radial-gradient(
+      var(--color-primary-soft) 1.2px,
+      transparent 1.2px
+    );
+
+  background-size: 10px 10px;
+}
+
+
+/* ==========================================================================
+   TOP INTRO
+   ========================================================================== */
+
+.sa-faculty-hero__top {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.2fr)
+    minmax(300px, 0.58fr);
+
+  align-items: end;
+
+  gap:
+    clamp(42px, 7vw, 98px);
+}
+
+
+/* ==========================================================================
+   EYEBROW
+   ========================================================================== */
+
+.sa-faculty-hero__eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin:
+    0
+    0
+    18px;
+
+  color:
+    var(--color-primary);
+
+  font-size: 0.73rem;
+
+  font-weight: 800;
+}
+
+
+.sa-faculty-hero__eyebrow svg {
+  color:
+    var(--color-accent);
+}
+
+
+/* ==========================================================================
+   TITLE
+   ========================================================================== */
+
+.sa-faculty-hero__title {
+  max-width: 780px;
+
+  margin: 0;
+
+  color:
+    var(--color-text);
+
+  font-size:
+    clamp(
+      3rem,
+      5.6vw,
+      5.55rem
+    );
+
+  font-weight: 900;
+
+  line-height: 0.96;
+
+  letter-spacing: -0.058em;
+}
+
+
+.sa-faculty-hero__title > span {
+  display: block;
+
+  margin-top: 5px;
+
+  color:
+    var(--color-primary);
+}
+
+
+/* ==========================================================================
+   RIGHT INTRO
+   ========================================================================== */
+
+.sa-faculty-hero__intro {
+  position: relative;
+
+  max-width: 430px;
+
+  padding-bottom: 7px;
+}
+
+
+.sa-faculty-hero__intro-line {
+  display: block;
+
+  width: 44px;
+  height: 3px;
+
+  margin-bottom: 18px;
+
+  border-radius:
+    var(--radius-pill);
+
+  background:
+    var(--color-accent);
+}
+
+
+.sa-faculty-hero__intro p {
+  margin: 0;
+
+  color:
+    var(--color-muted);
+
+  font-size: 0.79rem;
+
+  line-height: 1.73;
+}
+
+
+.sa-faculty-hero__intro a {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 20px;
+
+  color:
+    var(--color-primary);
+
+  font-size: 0.67rem;
+
+  font-weight: 800;
+
+  transition:
+    gap var(--transition-base),
+    color var(--transition-base);
+}
+
+
+.sa-faculty-hero__intro a > span {
+  display: grid;
+
+  width: 24px;
+  height: 24px;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background:
+    var(--color-primary-pale);
+
+  color:
+    var(--color-primary);
+
+  transition:
+    background var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-base);
+}
+
+
+.sa-faculty-hero__intro a:hover {
+  gap: 11px;
+
+  color:
+    var(--color-primary-deep);
+}
+
+
+.sa-faculty-hero__intro a:hover
+> span {
+  background:
+    var(--color-primary);
+
+  color:
+    var(--color-on-dark);
+
+  transform:
+    translateY(2px);
+}
+
+
+/* ==========================================================================
+   STRENGTHS GRID
+   ========================================================================== */
+
+.sa-faculty-hero__strengths {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  margin-top:
+    clamp(46px, 6vw, 70px);
+
+  border:
+    1px solid
+    var(--color-border);
+
+  border-radius:
+    var(--radius-lg);
+
+  overflow: hidden;
+
+  background:
+    var(--color-card);
+
+  box-shadow:
+    var(--shadow-sm);
+}
+
+
+/* ==========================================================================
+   STRENGTH CARD
+   ========================================================================== */
+
+.sa-faculty-strength {
+  position: relative;
+  isolation: isolate;
+
+  min-height: 230px;
+
+  overflow: hidden;
+
+  padding:
+    24px
+    22px
+    25px;
+
+  background:
+    var(--color-card);
+
+  transition:
+    background var(--transition-base),
+    transform var(--transition-base);
+}
+
+
+.sa-faculty-strength
++ .sa-faculty-strength {
+  border-left:
+    1px solid
+    var(--color-border);
+}
+
+
+.sa-faculty-strength::before {
+  position: absolute;
+  z-index: -1;
+
+  right: -70px;
+  bottom: -75px;
+
+  width: 145px;
+  height: 145px;
+
+  border:
+    1px solid
+    var(--color-primary-soft);
+
+  border-radius: 50%;
+
+  content: "";
+
+  opacity: 0;
+
+  transform:
+    scale(0.72);
+
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-slow);
+}
+
+
+.sa-faculty-strength:hover {
+  z-index: 2;
+
+  background:
+    var(--color-primary-pale);
+
+  transform:
+    translateY(-4px);
+}
+
+
+.sa-faculty-strength:hover::before {
+  opacity: 0.75;
+
+  transform:
+    scale(1);
+}
+
+
+/* ==========================================================================
+   CARD TOP
+   ========================================================================== */
+
+.sa-faculty-strength__top {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-bottom: 24px;
+}
+
+
+.sa-faculty-strength__icon {
+  display: grid;
+
+  width: 44px;
+  height: 44px;
+
+  place-items: center;
+
+  border-radius:
+    var(--radius-sm);
+
+  background:
+    var(--color-primary-pale);
+
+  color:
+    var(--color-primary);
+
+  transition:
+    background var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-base);
+}
+
+
+.sa-faculty-strength:hover
+.sa-faculty-strength__icon {
+  background:
+    var(--color-primary);
+
+  color:
+    var(--color-on-dark);
+
+  transform:
+    rotate(-6deg)
+    scale(1.06);
+}
+
+
+.sa-faculty-strength__number {
+  color:
+    var(--color-muted);
+
+  font-size: 0.55rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* ==========================================================================
+   CARD COPY
+   ========================================================================== */
+
+.sa-faculty-strength h2 {
+  margin: 0;
+
+  color:
+    var(--color-text);
+
+  font-size: 0.95rem;
+
+  font-weight: 900;
+
+  line-height: 1.2;
+
+  letter-spacing: -0.025em;
+}
+
+
+.sa-faculty-strength p {
+  margin:
+    11px
+    0
+    0;
+
+  color:
+    var(--color-muted);
+
+  font-size: 0.65rem;
+
+  line-height: 1.62;
+}
+
+
+/* ==========================================================================
+   GOLD ACCENT
+   ========================================================================== */
+
+.sa-faculty-strength__accent {
+  position: absolute;
+
+  left: 22px;
+  bottom: 20px;
+
+  width: 0;
+  height: 2px;
+
+  border-radius:
+    var(--radius-pill);
+
+  background:
+    var(--color-accent);
+
+  transition:
+    width var(--transition-base);
+}
+
+
+.sa-faculty-strength:hover
+.sa-faculty-strength__accent {
+  width: 42px;
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width: 980px) {
+  .sa-faculty-hero__top {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+  }
+
+
+  .sa-faculty-hero__intro {
+    max-width: 650px;
+  }
+
+
+  .sa-faculty-hero__strengths {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .sa-faculty-strength:nth-child(3) {
+    border-left: 0;
+
+    border-top:
+      1px solid
+      var(--color-border);
+  }
+
+
+  .sa-faculty-strength:nth-child(4) {
+    border-top:
+      1px solid
+      var(--color-border);
+  }
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width: 580px) {
+  .sa-faculty-hero {
+    padding:
+      54px
+      0
+      62px;
+  }
+
+
+  .sa-faculty-hero__title {
+    font-size:
+      clamp(
+        2.75rem,
+        13vw,
+        4rem
+      );
+  }
+
+
+  .sa-faculty-hero__strengths {
+    grid-template-columns: 1fr;
+  }
+
+
+  .sa-faculty-strength {
+    min-height: 195px;
+  }
+
+
+  .sa-faculty-strength
+  + .sa-faculty-strength {
+    border-top:
+      1px solid
+      var(--color-border);
+
+    border-left: 0;
+  }
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .sa-faculty-hero__intro a,
+  .sa-faculty-hero__intro a > span,
+  .sa-faculty-strength,
+  .sa-faculty-strength::before,
+  .sa-faculty-strength__icon,
+  .sa-faculty-strength__accent {
+    transition-duration: 0.01ms !important;
+  }
+}

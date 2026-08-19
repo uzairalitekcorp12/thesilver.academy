@@ -1,0 +1,2570 @@
+/* ========================================================================
+   SILVER ACADEMY
+   INDUSTRY-GRADE NAVBAR
+   ========================================================================
+
+   IMPORTANT:
+
+   This file contains NO permanent website HEX colors.
+
+   Every navbar color comes from:
+
+   app/globals.css
+
+   Therefore changing the global theme automatically updates this navbar.
+
+   ======================================================================== */
+
+
+/* ========================================================================
+   NAVBAR ROOT
+   ======================================================================== */
+
+.sa-navbar {
+  --sa-announcement-height: 38px;
+  --sa-announcement-scroll-offset: 0px;
+
+  position: sticky;
+
+  z-index: 1300;
+
+  /*
+   * The header is taller than the visible navbar by exactly the
+   * announcement height. A negative sticky offset lets that reserved
+   * announcement area scroll away while the navbar settles at top: 0.
+   * Nothing is removed from normal flow, so there is no layout shift.
+   */
+  top:
+    calc(
+      0px
+      -
+      var(--sa-announcement-height)
+    );
+
+  width: 100%;
+
+  height:
+    calc(
+      var(--nav-height)
+      +
+      var(--sa-announcement-height)
+    );
+
+  background:
+    var(--gradient-primary-wide);
+
+  isolation: isolate;
+
+  transition:
+    box-shadow
+      var(--transition-base);
+}
+
+
+.sa-navbar--scrolled {
+  box-shadow:
+    var(--shadow-sm);
+}
+
+
+/* ========================================================================
+   WEBSITE PREVIEW ANNOUNCEMENT
+   ========================================================================
+
+   Clean Silver Academy preview bar.
+
+   - Contains one message only.
+   - Uses the existing Purple + Gold global theme.
+   - Message travels LEFT -> RIGHT.
+   - Pauses on hover for readability.
+   - Scroll-away behaviour remains unchanged.
+   ======================================================================== */
+
+.sa-navbar__announcement {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+
+  width: 100%;
+  height:
+    var(--sa-announcement-height);
+
+  flex:
+    0 0
+    var(--sa-announcement-height);
+
+  align-items: center;
+
+  overflow: hidden;
+
+  border-bottom:
+    1px solid
+    var(--color-white-soft);
+
+  background:
+    linear-gradient(
+      105deg,
+      var(--color-primary-deep) 0%,
+      var(--color-primary) 38%,
+      var(--color-primary-rich) 68%,
+      var(--color-primary-deep) 100%
+    );
+
+  color:
+    var(--color-on-dark);
+
+  opacity: 1;
+
+  isolation: isolate;
+
+  transform:
+    translate3d(
+      0,
+      0,
+      0
+    );
+
+  will-change:
+    transform,
+    opacity;
+
+  transition:
+    opacity
+      220ms
+      var(--ease-standard),
+    transform
+      320ms
+      var(--ease-smooth);
+}
+
+
+/* Soft animated gold atmosphere */
+.sa-navbar__announcement::before {
+  position: absolute;
+  z-index: -1;
+
+  top: 50%;
+  left: -180px;
+
+  width: 360px;
+  height: 150px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--color-accent-soft),
+      var(--color-transparent) 68%
+    );
+
+  content: "";
+
+  opacity: 0.12;
+
+  pointer-events: none;
+
+  transform:
+    translateY(-50%);
+
+  animation:
+    saAnnouncementAmbient
+    10s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+/* Subtle polished line at the bottom */
+.sa-navbar__announcement::after {
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-transparent),
+      var(--color-white-soft),
+      var(--color-transparent)
+    );
+
+  content: "";
+
+  opacity: 0.72;
+
+  pointer-events: none;
+}
+
+
+/* ------------------------------------------------------------------------
+   Moving text viewport
+   ------------------------------------------------------------------------ */
+
+.sa-navbar__announcement-marquee {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  mask-image:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%
+    );
+
+  -webkit-mask-image:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%
+    );
+}
+
+
+.sa-navbar__announcement-text {
+  display: inline-block;
+
+  width: max-content;
+
+  flex: 0 0 auto;
+
+  padding-inline:
+    clamp(
+      18px,
+      3vw,
+      44px
+    );
+
+  color:
+    var(--color-on-dark);
+
+  font-family:
+    var(--font-primary);
+
+  font-size: 0.69rem;
+
+  font-weight:
+    var(--font-weight-semibold);
+
+  line-height: 1.2;
+
+  letter-spacing: 0.012em;
+
+  white-space: nowrap;
+
+  text-shadow:
+    0
+    1px
+    8px
+    var(--color-black-faint);
+
+  will-change: transform;
+
+  animation:
+    saAnnouncementMoveRight
+    18s
+    linear
+    infinite;
+}
+
+
+.sa-navbar__announcement-marquee:hover
+.sa-navbar__announcement-text {
+  animation-play-state: paused;
+}
+
+
+/* ------------------------------------------------------------------------
+   Scroll-away behaviour
+   ------------------------------------------------------------------------ */
+
+.sa-navbar--announcement-hidden
+.sa-navbar__announcement {
+  opacity: 0;
+
+  pointer-events: none;
+
+  transform:
+    translate3d(
+      0,
+      -10px,
+      0
+    );
+}
+
+
+/* ------------------------------------------------------------------------
+   Announcement animations
+   ------------------------------------------------------------------------ */
+
+@keyframes saAnnouncementMoveRight {
+  from {
+    transform:
+      translate3d(
+        -100%,
+        0,
+        0
+      );
+  }
+
+  to {
+    transform:
+      translate3d(
+        100vw,
+        0,
+        0
+      );
+  }
+}
+
+
+@keyframes saAnnouncementAmbient {
+  from {
+    transform:
+      translate3d(
+        0,
+        -50%,
+        0
+      )
+      scale(0.92);
+  }
+
+  to {
+    transform:
+      translate3d(
+        520px,
+        -50%,
+        0
+      )
+      scale(1.12);
+  }
+}
+
+
+/* ========================================================================
+   FULL WIDTH STRUCTURE
+
+   IMPORTANT:
+
+   There is NO max-width around this shell.
+
+   This ensures the BLACK NAVBAR SIDE reaches the RIGHT EDGE
+   of the browser.
+
+   ======================================================================== */
+
+.sa-navbar__shell {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+
+  width: 100%;
+  height:
+    var(--nav-height);
+
+  background:
+    var(--color-page);
+
+  grid-template-columns:
+    clamp(
+      250px,
+      18.5vw,
+      330px
+    )
+    minmax(
+      0,
+      1fr
+    );
+}
+
+
+/* ========================================================================
+   LOGO
+   ======================================================================== */
+
+.sa-navbar__brand {
+  position: relative;
+
+  display: flex;
+
+  height: 100%;
+
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    9px
+    clamp(
+      22px,
+      2.8vw,
+      44px
+    );
+
+  background:
+    var(--color-page);
+}
+
+
+.sa-navbar__brand img {
+  width: 100%;
+
+  max-width: 215px;
+
+  max-height:
+    calc(
+      var(--nav-height)
+      -
+      18px
+    );
+
+  object-fit: contain;
+
+  transform-origin:
+    center;
+
+  transition:
+    transform
+      var(--transition-base),
+    opacity
+      var(--transition-fast);
+}
+
+
+.sa-navbar__brand:hover img {
+  transform:
+    translateY(-2px)
+    scale(1.018);
+}
+
+
+/* ========================================================================
+   DARK NAVIGATION SIDE
+
+   Fills all available space until browser right edge.
+   ======================================================================== */
+
+.sa-navbar__dark {
+  position: relative;
+
+  min-width: 0;
+
+  height: 100%;
+
+  background:
+    var(--gradient-dark);
+
+  border-bottom-left-radius:
+    var(--radius-lg);
+}
+
+
+/* Soft navigation highlight */
+
+.sa-navbar__dark::before {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      115deg,
+      var(--color-transparent),
+      var(--color-white-faint),
+      var(--color-transparent)
+    );
+
+  content: "";
+
+  opacity: 0.35;
+}
+
+
+/* Bottom glass line */
+
+.sa-navbar__dark::after {
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  height: 1px;
+
+  background:
+    var(--color-white-soft);
+
+  content: "";
+
+  opacity: 0.5;
+}
+
+
+/* ========================================================================
+   DARK NAV INNER
+   ======================================================================== */
+
+.sa-navbar__dark-inner {
+  position: relative;
+
+  z-index: 3;
+
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  align-items: center;
+
+  gap:
+    clamp(
+      18px,
+      2vw,
+      36px
+    );
+
+  padding:
+    0
+    clamp(
+      30px,
+      4vw,
+      70px
+    );
+}
+
+
+/* ========================================================================
+   MAIN NAVIGATION
+   ======================================================================== */
+
+.sa-navbar__nav {
+  display: flex;
+
+  min-width: 0;
+
+  height: 100%;
+
+  flex: 1;
+
+  align-items: stretch;
+
+  gap:
+    clamp(
+      2px,
+      0.45vw,
+      9px
+    );
+}
+
+
+.sa-navbar__item {
+  position: relative;
+
+  display: flex;
+
+  height: 100%;
+
+  align-items: stretch;
+
+  flex: 0 0 auto;
+}
+
+
+/* ========================================================================
+   NAVIGATION LINK
+   ======================================================================== */
+
+.sa-navbar__link {
+  position: relative;
+
+  display: inline-flex;
+
+  height: 100%;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding:
+    0
+    clamp(
+      11px,
+      1vw,
+      17px
+    );
+
+  border: 0;
+
+  outline: 0;
+
+  background:
+    var(--color-transparent);
+
+  color:
+    var(--color-on-dark-muted);
+
+  cursor: pointer;
+
+  font-family:
+    var(--font-primary);
+
+  font-size: 0.84rem;
+
+  font-weight:
+    var(--font-weight-bold);
+
+  line-height: 1;
+
+  letter-spacing:
+    -0.015em;
+
+  white-space: nowrap;
+
+  transition:
+    color
+      var(--transition-fast),
+    transform
+      var(--transition-fast);
+}
+
+
+/* ========================================================================
+   NAVIGATION ACTIVE INDICATOR
+   ======================================================================== */
+
+.sa-navbar__link::after {
+  position: absolute;
+
+  bottom: 18px;
+
+  left: 50%;
+
+  width:
+    calc(
+      100%
+      -
+      28px
+    );
+
+  height: 3px;
+
+  border-radius:
+    var(--radius-pill);
+
+  background:
+    var(--color-accent);
+
+  content: "";
+
+  opacity: 0;
+
+  transform:
+    translateX(-50%)
+    scaleX(0.18);
+
+  transform-origin:
+    center;
+
+  transition:
+    opacity
+      var(--transition-base),
+    transform
+      var(--transition-base);
+}
+
+
+.sa-navbar__link:hover {
+  color:
+    var(--color-on-dark);
+
+  transform:
+    translateY(-1px);
+}
+
+
+.sa-navbar__link.is-active {
+  color:
+    var(--color-accent);
+}
+
+
+.sa-navbar__link:hover::after,
+.sa-navbar__link.is-active::after,
+.sa-navbar__item.is-open
+.sa-navbar__link::after {
+  opacity: 1;
+
+  transform:
+    translateX(-50%)
+    scaleX(1);
+}
+
+
+/* Dropdown arrow animation */
+
+.sa-navbar__link svg {
+  flex: 0 0 auto;
+
+  transition:
+    transform
+      var(--transition-base);
+}
+
+
+.sa-navbar__item.is-open
+.sa-navbar__link svg {
+  transform:
+    rotate(180deg);
+}
+
+
+/* ========================================================================
+   PROGRAMS DROPDOWN / MEGA PANEL
+   ======================================================================== */
+
+.sa-navbar__mega {
+  position: absolute;
+
+  z-index: 150;
+
+  top:
+    calc(
+      100%
+      -
+      5px
+    );
+
+  left: 0;
+
+  width:
+    min(
+      410px,
+      calc(
+        100vw
+        -
+        32px
+      )
+    );
+
+  padding: 14px;
+
+  border:
+    1px solid
+    var(--color-border);
+
+  border-radius:
+    var(--radius-lg);
+
+  background:
+    var(--color-card);
+
+  box-shadow:
+    var(--shadow-lg);
+
+  color:
+    var(--color-text);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transform:
+    translateY(16px)
+    scale(0.975);
+
+  transform-origin:
+    top left;
+
+  transition:
+    opacity
+      var(--transition-base),
+    visibility
+      var(--transition-base),
+    transform
+      var(--transition-base);
+}
+
+
+/*
+ * Invisible bridge prevents dropdown from closing
+ * while moving mouse from Programs into dropdown.
+ */
+
+.sa-navbar__mega::before {
+  position: absolute;
+
+  top: -20px;
+  right: 0;
+  left: 0;
+
+  height: 22px;
+
+  content: "";
+}
+
+
+.sa-navbar__item.is-open
+.sa-navbar__mega {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+
+/* ========================================================================
+   DROPDOWN HEADER
+   ======================================================================== */
+
+.sa-navbar__mega-top {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 18px;
+
+  padding:
+    10px
+    10px
+    15px;
+
+  border-bottom:
+    1px solid
+    var(--color-border);
+}
+
+
+.sa-navbar__mega-heading {
+  display: grid;
+
+  gap: 5px;
+}
+
+
+.sa-navbar__mega-heading > span {
+  color:
+    var(--color-accent-deep);
+
+  font-size: 0.65rem;
+
+  font-weight:
+    var(--font-weight-extrabold);
+
+  letter-spacing:
+    0.12em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.sa-navbar__mega-heading > strong {
+  color:
+    var(--color-text);
+
+  font-size: 1.05rem;
+
+  font-weight:
+    var(--font-weight-extrabold);
+
+  line-height: 1.25;
+}
+
+
+/* ========================================================================
+   DROPDOWN CLOSE
+   ======================================================================== */
+
+.sa-navbar__mega-close {
+  display: grid;
+
+  width: 32px;
+  height: 32px;
+
+  flex: 0 0 auto;
+
+  place-items: center;
+
+  border:
+    1px solid
+    var(--color-border);
+
+  border-radius: 50%;
+
+  background:
+    var(--color-page);
+
+  color:
+    var(--color-text);
+
+  cursor: pointer;
+
+  transition:
+    background
+      var(--transition-fast),
+    color
+      var(--transition-fast),
+    transform
+      var(--transition-base);
+}
+
+
+.sa-navbar__mega-close:hover {
+  background:
+    var(--color-primary-pale);
+
+  color:
+    var(--color-primary);
+
+  transform:
+    rotate(90deg);
+}
+
+
+/* ========================================================================
+   DROPDOWN ITEMS
+   ======================================================================== */
+
+.sa-navbar__mega-list {
+  display: grid;
+
+  gap: 4px;
+
+  padding-block: 9px;
+}
+
+
+.sa-navbar__mega-item {
+  display: grid;
+
+  width: 100%;
+
+  grid-template-columns:
+    36px
+    minmax(
+      0,
+      1fr
+    )
+    36px;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding:
+    10px;
+
+  border: 0;
+
+  border-radius:
+    var(--radius-md);
+
+  outline: 0;
+
+  background:
+    var(--color-transparent);
+
+  color:
+    var(--color-text);
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition:
+    background
+      var(--transition-fast),
+    transform
+      var(--transition-fast);
+}
+
+
+.sa-navbar__mega-item:hover,
+.sa-navbar__mega-item:focus-visible {
+  background:
+    var(--color-primary-pale);
+
+  transform:
+    translateX(3px);
+}
+
+
+/* Index */
+
+.sa-navbar__mega-index {
+  display: grid;
+
+  width: 34px;
+  height: 34px;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background:
+    var(--color-primary-pale);
+
+  color:
+    var(--color-primary);
+
+  font-size: 0.67rem;
+
+  font-weight:
+    var(--font-weight-extrabold);
+}
+
+
+/* Dropdown copy */
+
+.sa-navbar__mega-item-content {
+  display: grid;
+
+  min-width: 0;
+
+  gap: 4px;
+}
+
+
+.sa-navbar__mega-item-content strong {
+  color:
+    var(--color-text);
+
+  font-size: 0.79rem;
+
+  font-weight:
+    var(--font-weight-bold);
+}
+
+
+.sa-navbar__mega-item-content small {
+  color:
+    var(--color-muted);
+
+  font-size: 0.67rem;
+
+  line-height: 1.45;
+}
+
+
+/* Arrow */
+
+.sa-navbar__mega-arrow {
+  display: grid;
+
+  width: 34px;
+  height: 34px;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  color:
+    var(--color-primary);
+
+  transition:
+    background
+      var(--transition-fast),
+    transform
+      var(--transition-fast);
+}
+
+
+.sa-navbar__mega-item:hover
+.sa-navbar__mega-arrow {
+  background:
+    var(--color-card);
+
+  transform:
+    rotate(45deg);
+}
+
+
+/* ========================================================================
+   DROPDOWN CTA
+   ======================================================================== */
+
+.sa-navbar__mega-cta {
+  display: flex;
+
+  width: 100%;
+
+  min-height: 45px;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  padding:
+    0
+    15px;
+
+  border: 0;
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    var(--gradient-accent);
+
+  color:
+    var(--color-text);
+
+  cursor: pointer;
+
+  font-size: 0.76rem;
+
+  font-weight:
+    var(--font-weight-extrabold);
+
+  transition:
+    transform
+      var(--transition-fast),
+    box-shadow
+      var(--transition-fast);
+}
+
+
+.sa-navbar__mega-cta:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    var(--shadow-accent);
+}
+
+
+.sa-navbar__mega-cta svg {
+  transition:
+    transform
+      var(--transition-fast);
+}
+
+
+.sa-navbar__mega-cta:hover svg {
+  transform:
+    translateX(4px);
+}
+
+
+/* ========================================================================
+   RIGHT NAVBAR ACTIONS
+   ======================================================================== */
+
+.sa-navbar__actions {
+  position: relative;
+
+  display: flex;
+
+  flex: 0 0 auto;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-left: auto;
+}
+
+
+/* ========================================================================
+   SEARCH
+   ======================================================================== */
+
+.sa-navbar__search {
+  position: relative;
+}
+
+
+/* ========================================================================
+   SEARCH CIRCLE
+   ======================================================================== */
+
+.sa-navbar__search-trigger {
+  position: relative;
+
+  z-index: 4;
+
+  display: grid;
+
+  width: 48px;
+  height: 48px;
+
+  place-items: center;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  outline: 0;
+
+  background:
+    var(--gradient-accent);
+
+  color:
+    var(--color-text);
+
+  box-shadow:
+    var(--shadow-accent);
+
+  cursor: pointer;
+
+  transition:
+    transform
+      var(--transition-base),
+    box-shadow
+      var(--transition-base);
+}
+
+
+.sa-navbar__search-trigger:hover {
+  transform:
+    translateY(-3px)
+    scale(1.045);
+
+  box-shadow:
+    var(--shadow-md);
+}
+
+
+.sa-navbar__search.is-open
+.sa-navbar__search-trigger {
+  transform:
+    rotate(90deg);
+}
+
+
+/* ========================================================================
+   SEARCH PANEL
+   ======================================================================== */
+
+.sa-navbar__search-panel {
+  position: absolute;
+
+  z-index: 170;
+
+  top:
+    calc(
+      100%
+      +
+      21px
+    );
+
+  right: 0;
+
+  width:
+    min(
+      540px,
+      calc(
+        100vw
+        -
+        30px
+      )
+    );
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--color-border);
+
+  border-radius:
+    var(--radius-lg);
+
+  background:
+    var(--color-card);
+
+  box-shadow:
+    var(--shadow-lg);
+
+  color:
+    var(--color-text);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transform:
+    translateY(14px)
+    scale(0.98);
+
+  transform-origin:
+    top right;
+
+  transition:
+    opacity
+      var(--transition-base),
+    visibility
+      var(--transition-base),
+    transform
+      var(--transition-base);
+}
+
+
+.sa-navbar__search.is-open
+.sa-navbar__search-panel {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+
+/* ========================================================================
+   SEARCH INPUT
+   ======================================================================== */
+
+.sa-navbar__search-form {
+  display: grid;
+
+  min-height: 64px;
+
+  grid-template-columns:
+    auto
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding:
+    8px
+    14px
+    8px
+    18px;
+
+  border-bottom:
+    1px solid
+    var(--color-border);
+
+  background:
+    var(--color-page);
+}
+
+
+.sa-navbar__search-input-icon {
+  color:
+    var(--color-primary);
+}
+
+
+.sa-navbar__search-form input {
+  width: 100%;
+
+  min-width: 0;
+
+  padding:
+    11px
+    0;
+
+  border: 0;
+
+  outline: 0;
+
+  background:
+    var(--color-transparent);
+
+  color:
+    var(--color-text);
+
+  font-family:
+    var(--font-primary);
+
+  font-size: 0.84rem;
+
+  font-weight:
+    var(--font-weight-medium);
+}
+
+
+.sa-navbar__search-form
+input::placeholder {
+  color:
+    var(--color-muted);
+}
+
+
+/* Search shortcut */
+
+.sa-navbar__search-form kbd {
+  padding:
+    5px
+    8px;
+
+  border:
+    1px solid
+    var(--color-border);
+
+  border-radius:
+    var(--radius-xs);
+
+  background:
+    var(--color-primary-pale);
+
+  color:
+    var(--color-muted);
+
+  font-family:
+    var(--font-mono);
+
+  font-size: 0.61rem;
+
+  white-space: nowrap;
+}
+
+
+/* Clear search */
+
+.sa-navbar__search-clear {
+  display: grid;
+
+  width: 30px;
+  height: 30px;
+
+  place-items: center;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background:
+    var(--color-primary-pale);
+
+  color:
+    var(--color-primary);
+
+  cursor: pointer;
+
+  transition:
+    transform
+      var(--transition-fast);
+}
+
+
+.sa-navbar__search-clear:hover {
+  transform:
+    rotate(90deg);
+}
+
+
+/* ========================================================================
+   SEARCH BODY
+   ======================================================================== */
+
+.sa-navbar__search-body {
+  padding: 12px;
+}
+
+
+.sa-navbar__search-title {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding:
+    6px
+    7px
+    10px;
+}
+
+
+.sa-navbar__search-title span {
+  color:
+    var(--color-muted);
+
+  font-size: 0.65rem;
+
+  font-weight:
+    var(--font-weight-extrabold);
+
+  letter-spacing:
+    0.09em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.sa-navbar__search-title small {
+  color:
+    var(--color-muted);
+
+  font-size: 0.64rem;
+}
+
+
+/* ========================================================================
+   SEARCH RESULTS
+   ======================================================================== */
+
+.sa-navbar__search-results {
+  display: grid;
+
+  gap: 3px;
+}
+
+
+.sa-navbar__search-result {
+  display: grid;
+
+  width: 100%;
+
+  grid-template-columns:
+    36px
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding:
+    9px
+    10px;
+
+  border: 0;
+
+  border-radius:
+    var(--radius-md);
+
+  outline: 0;
+
+  background:
+    var(--color-transparent);
+
+  color:
+    var(--color-text);
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition:
+    background
+      var(--transition-fast),
+    transform
+      var(--transition-fast);
+}
+
+
+.sa-navbar__search-result:hover,
+.sa-navbar__search-result:focus-visible {
+  background:
+    var(--color-primary-pale);
+
+  transform:
+    translateX(3px);
+}
+
+
+.sa-navbar__search-result-icon {
+  display: grid;
+
+  width: 34px;
+  height: 34px;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background:
+    var(--color-primary-pale);
+
+  color:
+    var(--color-primary);
+}
+
+
+.sa-navbar__search-result-copy {
+  display: grid;
+
+  min-width: 0;
+
+  gap: 3px;
+}
+
+
+.sa-navbar__search-result-copy strong {
+  overflow: hidden;
+
+  color:
+    var(--color-text);
+
+  font-size: 0.77rem;
+
+  font-weight:
+    var(--font-weight-bold);
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+
+.sa-navbar__search-result-copy small {
+  color:
+    var(--color-muted);
+
+  font-size: 0.64rem;
+}
+
+
+.sa-navbar__search-result > svg {
+  color:
+    var(--color-primary);
+
+  transition:
+    transform
+      var(--transition-fast);
+}
+
+
+.sa-navbar__search-result:hover
+> svg {
+  transform:
+    translate(
+      2px,
+      -2px
+    );
+}
+
+
+/* ========================================================================
+   EMPTY SEARCH STATE
+   ======================================================================== */
+
+.sa-navbar__search-empty {
+  display: grid;
+
+  justify-items: center;
+
+  gap: 7px;
+
+  padding:
+    26px
+    16px
+    29px;
+
+  text-align: center;
+}
+
+
+.sa-navbar__search-empty > svg {
+  color:
+    var(--color-primary);
+}
+
+
+.sa-navbar__search-empty strong {
+  color:
+    var(--color-text);
+
+  font-size: 0.83rem;
+}
+
+
+.sa-navbar__search-empty span {
+  max-width: 315px;
+
+  color:
+    var(--color-muted);
+
+  font-size: 0.7rem;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================================================
+   MOBILE MENU BUTTON
+   ======================================================================== */
+
+.sa-navbar__menu-trigger {
+  display: none;
+
+  width: 46px;
+  height: 46px;
+
+  place-items: center;
+
+  border:
+    1px solid
+    var(--color-white-soft);
+
+  border-radius:
+    var(--radius-md);
+
+  outline: 0;
+
+  background:
+    var(--color-white-faint);
+
+  color:
+    var(--color-on-dark);
+
+  cursor: pointer;
+
+  transition:
+    background
+      var(--transition-fast),
+    transform
+      var(--transition-fast);
+}
+
+
+.sa-navbar__menu-trigger:hover {
+  background:
+    var(--color-white-soft);
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* ========================================================================
+   BACKDROP
+   ======================================================================== */
+
+.sa-navbar__backdrop {
+  position: fixed;
+
+  z-index: 1200;
+
+  inset: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+
+  background:
+    var(--color-backdrop);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  cursor: default;
+
+  transition:
+    opacity
+      var(--transition-base),
+    visibility
+      var(--transition-base);
+
+  backdrop-filter:
+    blur(3px);
+
+  -webkit-backdrop-filter:
+    blur(3px);
+}
+
+
+.sa-navbar__backdrop.is-visible {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+
+/* ========================================================================
+   LARGE LAPTOP
+   ======================================================================== */
+
+@media (max-width: 1320px) {
+
+  .sa-navbar__shell {
+    grid-template-columns:
+      225px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .sa-navbar__brand {
+    padding-inline: 23px;
+  }
+
+
+  .sa-navbar__brand img {
+    max-width: 185px;
+  }
+
+
+  .sa-navbar__dark-inner {
+    gap: 13px;
+
+    padding-inline: 28px;
+  }
+
+
+  .sa-navbar__nav {
+    gap: 0;
+  }
+
+
+  .sa-navbar__link {
+    padding-inline: 10px;
+
+    font-size: 0.76rem;
+  }
+
+
+  .sa-navbar__link::after {
+    bottom: 16px;
+  }
+
+
+  .sa-navbar__search-trigger {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+
+/* ========================================================================
+   TABLET / MOBILE NAVIGATION
+   ======================================================================== */
+
+@media (max-width: 1024px) {
+
+  .sa-navbar {
+    --sa-announcement-height: 40px;
+  }
+
+
+  .sa-navbar__announcement-text {
+    font-size: 0.65rem;
+
+    animation-duration: 17s;
+  }
+
+
+  /* ----------------------------------------------------------------------
+     Top mobile navbar
+     ---------------------------------------------------------------------- */
+
+  .sa-navbar__shell {
+    display: flex;
+
+    width: 100%;
+
+    align-items: stretch;
+
+    background:
+      var(--color-page);
+  }
+
+
+  .sa-navbar__brand {
+    flex: 1;
+
+    justify-content:
+      flex-start;
+
+    padding:
+      8px
+      18px;
+  }
+
+
+  .sa-navbar__brand img {
+    width: auto;
+
+    max-width: 170px;
+
+    max-height:
+      calc(
+        var(--nav-height)
+        -
+        15px
+      );
+  }
+
+
+  /* ----------------------------------------------------------------------
+     Remove desktop black strip from mobile top bar
+     ---------------------------------------------------------------------- */
+
+  .sa-navbar__dark {
+    position: static;
+
+    display: flex;
+
+    width: auto;
+
+    align-items: center;
+
+    padding-right: 14px;
+
+    background:
+      var(--color-page);
+
+    border-radius: 0;
+  }
+
+
+  .sa-navbar__dark::before,
+  .sa-navbar__dark::after {
+    display: none;
+  }
+
+
+  .sa-navbar__dark-inner {
+    position: static;
+
+    width: auto;
+    height: 100%;
+
+    gap: 8px;
+
+    padding: 0;
+  }
+
+
+  .sa-navbar__actions {
+    gap: 8px;
+  }
+
+
+  /* ----------------------------------------------------------------------
+     Mobile buttons
+     ---------------------------------------------------------------------- */
+
+  .sa-navbar__search-trigger {
+    width: 44px;
+    height: 44px;
+  }
+
+
+  .sa-navbar__menu-trigger {
+    display: grid;
+
+    background:
+      var(--color-dark);
+
+    border-color:
+      var(--color-dark);
+
+    color:
+      var(--color-on-dark);
+  }
+
+
+  /* ----------------------------------------------------------------------
+     Mobile navigation panel
+     ---------------------------------------------------------------------- */
+
+  .sa-navbar__nav {
+    position: fixed;
+
+    z-index: 1400;
+
+    top:
+      calc(
+        var(--nav-height)
+        +
+        var(--sa-announcement-height)
+        -
+        var(--sa-announcement-scroll-offset)
+        +
+        10px
+      );
+
+    right: 14px;
+    left: 14px;
+
+    display: grid;
+
+    width: auto;
+    height: auto;
+
+    max-height:
+      calc(
+        100dvh
+        -
+        var(--nav-height)
+        -
+        var(--sa-announcement-height)
+        +
+        var(--sa-announcement-scroll-offset)
+        -
+        28px
+      );
+
+    align-content: start;
+
+    gap: 4px;
+
+    padding: 12px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    border:
+      1px solid
+      var(--color-white-soft);
+
+    border-radius:
+      var(--radius-lg);
+
+    background:
+      var(--color-dark-glass);
+
+    box-shadow:
+      var(--shadow-lg);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+      translateY(-12px)
+      scale(0.98);
+
+    transform-origin:
+      top center;
+
+    transition:
+      opacity
+        var(--transition-base),
+      visibility
+        var(--transition-base),
+      transform
+        var(--transition-base);
+
+    backdrop-filter:
+      blur(22px);
+
+    -webkit-backdrop-filter:
+      blur(22px);
+  }
+
+
+  .sa-navbar__nav--open {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+
+  .sa-navbar__item {
+    display: block;
+
+    width: 100%;
+    height: auto;
+  }
+
+
+  /* ----------------------------------------------------------------------
+     Mobile navigation links
+     ---------------------------------------------------------------------- */
+
+  .sa-navbar__link {
+    width: 100%;
+    height: 49px;
+
+    justify-content:
+      space-between;
+
+    padding:
+      0
+      14px;
+
+    border-radius:
+      var(--radius-md);
+
+    color:
+      var(--color-on-dark-muted);
+
+    font-size: 0.82rem;
+  }
+
+
+  .sa-navbar__link::after {
+    display: none;
+  }
+
+
+  .sa-navbar__link:hover,
+  .sa-navbar__link.is-active,
+  .sa-navbar__item.is-open
+  .sa-navbar__link {
+    background:
+      var(--color-white-faint);
+
+    color:
+      var(--color-accent);
+
+    transform: none;
+  }
+
+
+  /* ======================================================================
+     MOBILE PROGRAM DROPDOWN
+     ====================================================================== */
+
+  .sa-navbar__mega {
+    position: static;
+
+    width: 100%;
+
+    max-height: 0;
+
+    margin: 0;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    border: 0;
+
+    border-radius:
+      var(--radius-md);
+
+    background:
+      var(--color-transparent);
+
+    box-shadow: none;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform: none;
+
+    transition:
+      max-height
+        var(--transition-slow),
+      opacity
+        var(--transition-base),
+      margin
+        var(--transition-base),
+      padding
+        var(--transition-base);
+  }
+
+
+  .sa-navbar__mega::before {
+    display: none;
+  }
+
+
+  .sa-navbar__item.is-open
+  .sa-navbar__mega {
+    max-height: 650px;
+
+    margin-top: 5px;
+
+    padding: 8px;
+
+    border:
+      1px solid
+      var(--color-white-soft);
+
+    background:
+      var(--color-white-faint);
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform: none;
+  }
+
+
+  .sa-navbar__mega-top {
+    border-bottom-color:
+      var(--color-white-soft);
+  }
+
+
+  .sa-navbar__mega-heading
+  > strong {
+    color:
+      var(--color-on-dark);
+  }
+
+
+  .sa-navbar__mega-heading
+  > span {
+    color:
+      var(--color-accent);
+  }
+
+
+  .sa-navbar__mega-close {
+    border-color:
+      var(--color-white-soft);
+
+    background:
+      var(--color-white-faint);
+
+    color:
+      var(--color-on-dark);
+  }
+
+
+  .sa-navbar__mega-item-content
+  strong {
+    color:
+      var(--color-on-dark);
+  }
+
+
+  .sa-navbar__mega-item-content
+  small {
+    color:
+      var(--color-on-dark-muted);
+  }
+
+
+  .sa-navbar__mega-item:hover {
+    background:
+      var(--color-white-faint);
+  }
+
+
+  .sa-navbar__mega-index {
+    background:
+      var(--color-white-faint);
+
+    color:
+      var(--color-accent);
+  }
+
+
+  .sa-navbar__mega-arrow {
+    color:
+      var(--color-accent);
+  }
+
+
+  /* ======================================================================
+     MOBILE SEARCH
+     ====================================================================== */
+
+  .sa-navbar__search-panel {
+    position: fixed;
+
+    z-index: 1450;
+
+    top:
+      calc(
+        var(--nav-height)
+        +
+        var(--sa-announcement-height)
+        -
+        var(--sa-announcement-scroll-offset)
+        +
+        10px
+      );
+
+    right: 14px;
+    left: 14px;
+
+    width: auto;
+
+    max-height:
+      calc(
+        100dvh
+        -
+        var(--nav-height)
+        -
+        var(--sa-announcement-height)
+        +
+        var(--sa-announcement-scroll-offset)
+        -
+        28px
+      );
+
+    overflow-y: auto;
+  }
+
+}
+
+
+/* ========================================================================
+   MOBILE
+   ======================================================================== */
+
+@media (max-width: 600px) {
+
+  .sa-navbar {
+    --sa-announcement-height: 46px;
+  }
+
+
+  .sa-navbar__announcement-text {
+    padding-inline: 28px;
+
+    font-size: 0.61rem;
+
+    animation-duration: 15s;
+  }
+
+
+  .sa-navbar__brand {
+    padding:
+      7px
+      12px;
+  }
+
+
+  .sa-navbar__brand img {
+    max-width: 148px;
+  }
+
+
+  .sa-navbar__dark {
+    padding-right: 10px;
+  }
+
+
+  .sa-navbar__actions {
+    gap: 6px;
+  }
+
+
+  .sa-navbar__search-trigger,
+  .sa-navbar__menu-trigger {
+    width: 40px;
+    height: 40px;
+  }
+
+
+  .sa-navbar__nav {
+    top:
+      calc(
+        var(--nav-height)
+        +
+        var(--sa-announcement-height)
+        -
+        var(--sa-announcement-scroll-offset)
+        +
+        8px
+      );
+
+    right: 10px;
+    left: 10px;
+
+    padding: 10px;
+
+    border-radius:
+      var(--radius-md);
+  }
+
+
+  .sa-navbar__link {
+    height: 46px;
+
+    font-size: 0.79rem;
+  }
+
+
+  .sa-navbar__search-panel {
+    top:
+      calc(
+        var(--nav-height)
+        +
+        var(--sa-announcement-height)
+        -
+        var(--sa-announcement-scroll-offset)
+        +
+        8px
+      );
+
+    right: 10px;
+    left: 10px;
+  }
+
+
+  .sa-navbar__search-form {
+    min-height: 58px;
+
+    padding-inline: 14px;
+  }
+
+
+  .sa-navbar__search-form input {
+    font-size: 0.77rem;
+  }
+
+
+  .sa-navbar__search-form kbd {
+    display: none;
+  }
+
+
+  .sa-navbar__search-body {
+    padding: 9px;
+  }
+
+
+  .sa-navbar__mega-item-content
+  small {
+    display: none;
+  }
+
+}
+
+
+/* ========================================================================
+   VERY SMALL MOBILE
+   ======================================================================== */
+
+@media (max-width: 380px) {
+
+  .sa-navbar {
+    --sa-announcement-height: 50px;
+  }
+
+
+  .sa-navbar__announcement-text {
+    padding-inline: 22px;
+
+    font-size: 0.58rem;
+
+    animation-duration: 14s;
+  }
+
+
+  .sa-navbar__brand img {
+    max-width: 128px;
+  }
+
+
+  .sa-navbar__actions {
+    gap: 5px;
+  }
+
+
+  .sa-navbar__search-trigger,
+  .sa-navbar__menu-trigger {
+    width: 38px;
+    height: 38px;
+  }
+
+
+  .sa-navbar__mega-item {
+    grid-template-columns:
+      30px
+      minmax(
+        0,
+        1fr
+      )
+      30px;
+
+    gap: 7px;
+  }
+
+}
+
+
+/* ========================================================================
+   KEYBOARD ACCESSIBILITY
+   ======================================================================== */
+
+.sa-navbar button:focus-visible,
+.sa-navbar a:focus-visible,
+.sa-navbar input:focus-visible {
+  outline:
+    2px solid
+    var(--color-accent);
+
+  outline-offset: 3px;
+}
+
+
+/* ========================================================================
+   REDUCED MOTION
+   ======================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sa-navbar *,
+  .sa-navbar *::before,
+  .sa-navbar *::after {
+    transition-duration:
+      0.01ms !important;
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+  }
+
+
+  .sa-navbar__announcement-text {
+    transform: none !important;
+  }
+
+}

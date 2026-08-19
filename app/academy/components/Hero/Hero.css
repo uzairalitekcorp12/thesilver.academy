@@ -1,0 +1,2394 @@
+/* ========================================================================
+   SILVER ACADEMY — HERO
+   Designed specifically for transparent PNG / WebP faculty cutouts.
+   ======================================================================== */
+
+.sa-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 84% 14%,
+      var(--color-primary-pale) 0,
+      transparent 31%
+    ),
+    radial-gradient(
+      circle at 8% 94%,
+      var(--color-accent-pale) 0,
+      transparent 25%
+    ),
+    var(--color-page);
+}
+
+/* Soft section fade */
+.sa-hero::after {
+  position: absolute;
+  z-index: -10;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  height: 90px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      var(--color-shadow-soft)
+    );
+
+  content: "";
+  opacity: 0.34;
+  pointer-events: none;
+}
+
+/* Slightly wider than normal sections */
+.site-container.sa-hero__grid {
+  width: min(
+    calc(100% - 48px),
+    1320px
+  );
+}
+
+/* ========================================================================
+   AMBIENT BACKGROUND
+   ======================================================================== */
+
+.sa-hero__ambient {
+  position: absolute;
+  z-index: -5;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+  will-change: transform;
+}
+
+.sa-hero__ambient--one {
+  top: -290px;
+  right: -200px;
+
+  width: 650px;
+  height: 650px;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--color-primary-pale),
+      transparent 68%
+    );
+
+  animation:
+    saAmbientOne
+    14s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+.sa-hero__ambient--two {
+  bottom: -350px;
+  left: -250px;
+
+  width: 680px;
+  height: 680px;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--color-accent-pale),
+      transparent 68%
+    );
+
+  animation:
+    saAmbientTwo
+    17s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+.sa-hero__ambient--three {
+  top: 18%;
+  right: 31%;
+
+  width: 270px;
+  height: 270px;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--color-purple-faint),
+      transparent 70%
+    );
+
+  filter: blur(16px);
+
+  animation:
+    saAmbientThree
+    11s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+/* ========================================================================
+   HERO GRID
+   ======================================================================== */
+
+.sa-hero__grid {
+  display: grid;
+
+  min-height: 590px;
+
+  grid-template-columns:
+    minmax(0, 0.95fr)
+    minmax(500px, 1.05fr);
+
+  align-items: center;
+
+  gap:
+    clamp(
+      34px,
+      4vw,
+      72px
+    );
+
+  padding-top: 34px;
+  padding-bottom: 44px;
+}
+
+/* ========================================================================
+   LEFT CONTENT
+   ======================================================================== */
+
+.sa-hero__content {
+  position: relative;
+  z-index: 20;
+
+  max-width: 650px;
+
+  padding-block: 28px;
+}
+
+.sa-hero__eyebrow {
+  margin:
+    0
+    0
+    14px;
+
+  color: var(--color-primary);
+
+  font-size: 0.88rem;
+  font-weight: 750;
+
+  letter-spacing: -0.01em;
+}
+
+/* ========================================================================
+   TITLE
+   ======================================================================== */
+
+.sa-hero__title {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-family:
+    var(
+      --font-display,
+      var(--font-sans)
+    );
+
+  font-size:
+    clamp(
+      3.3rem,
+      4.25vw,
+      4.65rem
+    );
+
+  font-weight: 850;
+
+  line-height: 0.98;
+
+  letter-spacing: -0.058em;
+}
+
+.sa-hero__title-line {
+  display: block;
+
+  width: max-content;
+  max-width: 100%;
+}
+
+.sa-hero__title-line
+  + .sa-hero__title-line {
+  margin-top: 3px;
+}
+
+.sa-hero__title-highlight {
+  position: relative;
+
+  display: inline-block;
+
+  color: var(--color-primary);
+}
+
+.sa-hero__title-highlight::after {
+  position: absolute;
+
+  right: 2%;
+  bottom: -9px;
+
+  width: 42%;
+  height: 4px;
+
+  border-radius: var(--radius-pill);
+
+  background: var(--color-accent);
+
+  content: "";
+
+  transform-origin: right;
+
+  animation:
+    saUnderline
+    900ms
+    var(--ease-standard)
+    400ms
+    both;
+}
+
+/* ========================================================================
+   HERO TEXT
+   ======================================================================== */
+
+.sa-hero__copy {
+  max-width: 590px;
+
+  margin:
+    26px
+    0
+    0;
+
+  color: var(--color-muted);
+
+  font-size: 0.96rem;
+
+  line-height: 1.82;
+}
+
+/* ========================================================================
+   BUTTONS
+   ======================================================================== */
+
+.sa-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 14px;
+
+  margin-top: 29px;
+}
+
+.sa-hero__primary {
+  min-width: 174px;
+}
+
+/* ========================================================================
+   FEATURES
+   ======================================================================== */
+
+.sa-hero__features {
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  gap:
+    clamp(
+      20px,
+      3vw,
+      34px
+    );
+
+  margin-top: 38px;
+}
+
+.sa-hero__feature {
+  display: flex;
+
+  min-width: 144px;
+  max-width: 170px;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color: var(--color-text-soft);
+
+  font-size: 0.72rem;
+
+  font-weight: 750;
+
+  line-height: 1.35;
+}
+
+.sa-hero__feature-icon {
+  display: grid;
+
+  width: 40px;
+  height: 40px;
+
+  flex:
+    0
+    0
+    40px;
+
+  place-items: center;
+
+  border:
+    1px
+    solid
+    var(--color-border);
+
+  border-radius: 12px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.82
+    );
+
+  color: var(--color-primary);
+
+  box-shadow:
+    0
+    7px
+    20px
+    var(--color-shadow-soft);
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.sa-hero__feature:hover
+.sa-hero__feature-icon {
+  border-color:
+    var(--color-primary-soft);
+
+  box-shadow:
+    var(--shadow-sm);
+
+  transform:
+    translateY(-4px)
+    rotate(-4deg);
+}
+
+/* ========================================================================
+   RIGHT VISUAL
+   ======================================================================== */
+
+.sa-hero__visual {
+  position: relative;
+  z-index: 2;
+
+  min-height: 545px;
+
+  perspective: 1200px;
+}
+
+/* Background glow behind entire composition */
+
+.sa-hero__visual-glow {
+  position: absolute;
+
+  z-index: -1;
+
+  top: 50%;
+  left: 52%;
+
+  width: 430px;
+  height: 430px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(90, 43, 132, 0.15),
+      rgba(90, 43, 132, 0.05) 42%,
+      transparent 70%
+    );
+
+  filter: blur(5px);
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  animation:
+    saVisualGlow
+    7s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+/* ========================================================================
+   ORBITAL RINGS
+   ======================================================================== */
+
+.sa-hero__ring {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.sa-hero__ring--outer {
+  z-index: 0;
+
+  top: 42px;
+  right: 28px;
+
+  width: 444px;
+  height: 444px;
+
+  border:
+    1.5px
+    solid
+    var(--color-primary-soft);
+
+  opacity: 0.55;
+
+  animation:
+    saRingSpin
+    25s
+    linear
+    infinite;
+}
+
+.sa-hero__ring--outer::before {
+  position: absolute;
+
+  inset: 30px;
+
+  border:
+    1px
+    dashed
+    var(--color-border-strong);
+
+  border-radius: 50%;
+
+  content: "";
+
+  opacity: 0.6;
+}
+
+.sa-hero__ring--outer span {
+  position: absolute;
+
+  top: 7%;
+  left: 21%;
+
+  width: 11px;
+  height: 11px;
+
+  border-radius: 50%;
+
+  background:
+    var(--color-accent);
+
+  box-shadow:
+    0 0 0 7px
+    var(--color-gold-faint),
+    var(--shadow-accent);
+}
+
+.sa-hero__ring--inner {
+  z-index: 0;
+
+  top: 98px;
+  right: 84px;
+
+  width: 330px;
+  height: 330px;
+
+  border:
+    1px
+    solid
+    var(--color-purple-soft);
+
+  opacity: 0.4;
+
+  animation:
+    saRingSpinReverse
+    19s
+    linear
+    infinite;
+}
+
+/* ========================================================================
+   ABSTRACT ANIMATED ART
+   ======================================================================== */
+
+.sa-hero__shape {
+  position: absolute;
+
+  pointer-events: none;
+
+  will-change:
+    transform,
+    border-radius;
+}
+
+/* Main purple blob */
+
+.sa-hero__shape--primary {
+  z-index: 1;
+
+  top: 126px;
+  right: 62px;
+
+  width: 360px;
+  height: 300px;
+
+  border-radius:
+    48% 52% 61% 39%
+    /
+    58% 37% 63% 42%;
+
+  background:
+    var(--gradient-primary-wide);
+
+  box-shadow:
+    0
+    26px
+    65px
+    var(--color-primary-shadow);
+
+  transform:
+    rotate(10deg);
+
+  animation:
+    saPrimaryShape
+    8s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+/* Secondary lighter purple shape */
+
+.sa-hero__shape--secondary {
+  z-index: 0;
+
+  top: 176px;
+  right: 27px;
+
+  width: 255px;
+  height: 215px;
+
+  border-radius:
+    62% 38% 51% 49%
+    /
+    43% 58% 42% 57%;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(154, 114, 183, 0.35),
+      rgba(90, 43, 132, 0.08)
+    );
+
+  transform:
+    rotate(-8deg);
+
+  animation:
+    saSecondaryShape
+    10s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+/* Black graphic shape */
+
+.sa-hero__shape--dark {
+  z-index: 1;
+
+  top: 125px;
+  right: 332px;
+
+  width: 188px;
+  height: 105px;
+
+  border-radius:
+    65% 35% 46% 54%
+    /
+    55% 45% 55% 45%;
+
+  background:
+    var(--gradient-dark);
+
+  transform:
+    rotate(-24deg);
+
+  animation:
+    saDarkShape
+    7s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+/* Purple curved outline */
+
+.sa-hero__shape--outline {
+  z-index: 0;
+
+  top: 205px;
+  right: -5px;
+
+  width: 170px;
+  height: 245px;
+
+  border:
+    2px
+    solid
+    var(--color-primary-soft);
+
+  border-left-color:
+    transparent;
+
+  border-radius: 50%;
+
+  opacity: 0.6;
+
+  transform:
+    rotate(-13deg);
+
+  animation:
+    saOutlineMove
+    9s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+/* ========================================================================
+   DECORATIVE DOTS
+   ======================================================================== */
+
+.sa-hero__dots {
+  position: absolute;
+
+  z-index: 2;
+
+  bottom: 90px;
+  left: 10px;
+
+  width: 86px;
+  height: 86px;
+
+  opacity: 0.5;
+
+  background-image:
+    radial-gradient(
+      var(--color-text-soft)
+      1.4px,
+      transparent
+      1.4px
+    );
+
+  background-size:
+    10px
+    10px;
+
+  mask-image:
+    linear-gradient(
+      to bottom right,
+      #000 35%,
+      rgba(0, 0, 0, 0.08)
+    );
+
+  animation:
+    saDotsFloat
+    6s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+/* ========================================================================
+   SMALL FLOATING PARTICLES
+   ======================================================================== */
+
+.sa-hero__particle {
+  position: absolute;
+
+  z-index: 3;
+
+  display: block;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.sa-hero__particle--one {
+  top: 77px;
+  left: 80px;
+
+  width: 9px;
+  height: 9px;
+
+  background:
+    var(--color-accent);
+
+  box-shadow:
+    0
+    0
+    0
+    7px
+    var(--color-gold-faint);
+
+  animation:
+    saParticleOne
+    5.5s
+    ease-in-out
+    infinite;
+}
+
+.sa-hero__particle--two {
+  right: 26px;
+  bottom: 112px;
+
+  width: 8px;
+  height: 8px;
+
+  background:
+    var(--color-primary);
+
+  box-shadow:
+    0
+    0
+    0
+    7px
+    var(--color-purple-faint);
+
+  animation:
+    saParticleTwo
+    7s
+    ease-in-out
+    infinite;
+}
+
+.sa-hero__particle--three {
+  top: 310px;
+  left: 58px;
+
+  width: 6px;
+  height: 6px;
+
+  background:
+    var(--color-primary-soft);
+
+  animation:
+    saParticleThree
+    8s
+    ease-in-out
+    infinite;
+}
+
+/* ========================================================================
+   PROFESSOR CUTOUT
+   ------------------------------------------------------------------------
+   IMPORTANT:
+   THIS HAS NO FRAME, NO WHITE BORDER, NO BACKGROUND AND NO CLIPPING.
+   ======================================================================== */
+
+.sa-hero__portrait-shell {
+  position: absolute;
+
+  z-index: 6;
+
+  right: 58px;
+  bottom: -2px;
+
+  width: min(
+    76%,
+    455px
+  );
+
+  height: 520px;
+
+  pointer-events: none;
+}
+
+/*
+  This is only a subtle glow BEHIND the transparent person.
+  It does not create a container around the professor.
+*/
+.sa-hero__portrait-backlight {
+  position: absolute;
+
+  z-index: 0;
+
+  top: 18%;
+  left: 50%;
+
+  width: 78%;
+  height: 72%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.12),
+      rgba(90, 43, 132, 0.06) 40%,
+      transparent 70%
+    );
+
+  filter:
+    blur(20px);
+
+  transform:
+    translateX(-50%);
+
+  animation:
+    saBacklightPulse
+    6s
+    ease-in-out
+    infinite
+    alternate;
+
+  pointer-events: none;
+}
+
+/*
+  Next/Image fill images sit directly here.
+
+  `contain` is extremely important when using transparent
+  background-removed professor PNG/WebP files.
+*/
+.sa-hero__teacher {
+  z-index: 2;
+
+  object-fit: contain;
+
+  opacity: 0;
+
+  transform:
+    translate3d(
+      14px,
+      16px,
+      0
+    )
+    scale(0.96);
+
+  transform-origin:
+    50%
+    100%;
+
+  filter:
+    drop-shadow(
+      0
+      24px
+      22px
+      rgba(16, 21, 27, 0.18)
+    );
+
+  transition:
+    opacity
+      700ms
+      var(--ease-standard),
+    transform
+      900ms
+      var(--ease-standard),
+    filter
+      600ms
+      var(--ease-standard);
+
+  will-change:
+    opacity,
+    transform;
+
+  pointer-events: none;
+}
+
+.sa-hero__teacher.is-active {
+  opacity: 1;
+
+  transform:
+    translate3d(
+      0,
+      0,
+      0
+    )
+    scale(1);
+
+  filter:
+    drop-shadow(
+      0
+      28px
+      26px
+      rgba(16, 21, 27, 0.2)
+    );
+
+  animation:
+    saTeacherEntrance
+    900ms
+    var(--ease-standard)
+    both;
+}
+
+/*
+  Shadow below feet/body.
+  Again: this is not a border or frame.
+*/
+.sa-hero__portrait-ground-shadow {
+  position: absolute;
+
+  z-index: 1;
+
+  right: 8%;
+  bottom: 4px;
+
+  width: 76%;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      48,
+      24,
+      65,
+      0.22
+    );
+
+  filter: blur(18px);
+
+  transform:
+    scaleX(0.9);
+
+  animation:
+    saGroundShadow
+    5s
+    ease-in-out
+    infinite
+    alternate;
+
+  pointer-events: none;
+}
+
+/* ========================================================================
+   PROGRAM CARD
+   ======================================================================== */
+
+.sa-hero__program-card {
+  position: absolute;
+
+  z-index: 12;
+
+  top: 25px;
+  right: 2px;
+
+  width: 174px;
+
+  min-height: 112px;
+
+  padding:
+    12px
+    13px
+    13px;
+
+  border:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.8
+    );
+
+  border-radius: 16px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.9
+    );
+
+  box-shadow:
+    0
+    20px
+    50px
+    var(--color-shadow-medium);
+
+  backdrop-filter: blur(16px);
+
+  animation:
+    saCardEntrance
+      550ms
+      var(--ease-standard)
+      both,
+    saProgramFloat
+      5.2s
+      ease-in-out
+      550ms
+      infinite;
+}
+
+.sa-hero__program-card-top {
+  display: grid;
+
+  min-height: 48px;
+
+  align-items: center;
+  justify-items: center;
+
+  gap: 3px;
+
+  text-align: center;
+}
+
+.sa-hero__program-card img {
+  width: 126px;
+  height: 35px;
+
+  object-fit: contain;
+}
+
+.sa-hero__program-card-icon {
+  display: grid;
+
+  width: 36px;
+  height: 36px;
+
+  place-items: center;
+
+  border-radius: 10px;
+
+  background:
+    var(--color-primary-pale);
+
+  color:
+    var(--color-primary);
+}
+
+.sa-hero__program-card small {
+  color:
+    var(--color-muted);
+
+  font-size: 0.56rem;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+.sa-hero__program-card > strong {
+  display: block;
+
+  margin-top: 8px;
+
+  color:
+    var(--color-text);
+
+  font-size: 0.72rem;
+
+  font-weight: 850;
+
+  line-height: 1.3;
+
+  text-align: center;
+}
+
+/* ========================================================================
+   SESSION CARD
+   ======================================================================== */
+
+.sa-hero__session-card {
+  position: absolute;
+
+  z-index: 13;
+
+  right: 0;
+  bottom: 22px;
+
+  width: 236px;
+
+  overflow: hidden;
+
+  padding:
+    20px
+    20px
+    17px;
+
+  border:
+    1px
+    solid
+    var(--color-white-faint);
+
+  border-radius: 15px;
+
+  background:
+    radial-gradient(
+      circle at 110% -10%,
+      var(--color-purple-soft),
+      transparent 40%
+    ),
+    var(--gradient-dark);
+
+  color:
+    var(--color-on-dark);
+
+  box-shadow:
+    0
+    25px
+    60px
+    var(--color-shadow-strong);
+
+  animation:
+    saCardEntrance
+      550ms
+      var(--ease-standard)
+      both,
+    saSessionFloat
+      5.7s
+      ease-in-out
+      550ms
+      infinite;
+}
+
+.sa-hero__session-card::before {
+  position: absolute;
+
+  top: -74px;
+  right: -64px;
+
+  width: 142px;
+  height: 142px;
+
+  border-radius: 50%;
+
+  background:
+    var(--color-purple-soft);
+
+  content: "";
+}
+
+.sa-hero__session-card::after {
+  position: absolute;
+
+  right: 15px;
+  bottom: 11px;
+
+  width: 54px;
+  height: 54px;
+
+  border:
+    1px
+    solid
+    var(--color-white-faint);
+
+  border-radius: 50%;
+
+  content: "";
+
+  opacity: 0.4;
+}
+
+.sa-hero__session-card > * {
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  animation:
+    saTextReveal
+    450ms
+    var(--ease-standard)
+    both;
+}
+
+.sa-hero__session-card
+> :nth-child(1) {
+  animation-delay: 70ms;
+}
+
+.sa-hero__session-card
+> :nth-child(2) {
+  animation-delay: 125ms;
+}
+
+.sa-hero__session-card
+> :nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.sa-hero__session-card
+> :nth-child(4) {
+  animation-delay: 235ms;
+}
+
+.sa-hero__session-subject {
+  font-size: 0.76rem;
+
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  letter-spacing: 0.02em;
+}
+
+.sa-hero__session-teacher {
+  margin-top: 3px;
+
+  font-size: 0.98rem;
+
+  font-weight: 850;
+
+  line-height: 1.15;
+}
+
+.sa-hero__session-ribbon {
+  width: max-content;
+
+  max-width: 100%;
+
+  margin-top: 8px;
+
+  padding:
+    4px
+    8px;
+
+  border-radius: 4px;
+
+  background:
+    var(--color-accent);
+
+  color:
+    var(--color-dark);
+
+  font-size: 0.61rem;
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 0.015em;
+}
+
+.sa-hero__session-card em {
+  margin-top: 6px;
+
+  color: #b889d5;
+
+  font-family:
+    var(
+      --font-display,
+      var(--font-sans)
+    );
+
+  font-size: 1.64rem;
+
+  font-style: normal;
+
+  font-weight: 900;
+
+  line-height: 0.95;
+
+  letter-spacing: -0.05em;
+}
+
+/* ========================================================================
+   SLIDER CONTROLS
+   ======================================================================== */
+
+.sa-hero__slider-nav {
+  position: absolute;
+
+  z-index: 14;
+
+  left: 116px;
+  bottom: 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 6px;
+
+  border:
+    1px
+    solid
+    var(--color-border);
+
+  border-radius:
+    var(--radius-pill);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.86
+    );
+
+  box-shadow:
+    var(--shadow-xs);
+
+  backdrop-filter:
+    blur(12px);
+}
+
+.sa-hero__slider-nav button {
+  display: grid;
+
+  width: 24px;
+  height: 20px;
+
+  cursor: pointer;
+
+  place-items: center;
+
+  border-radius:
+    var(--radius-pill);
+
+  background: transparent;
+}
+
+.sa-hero__slider-nav button span {
+  display: block;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius:
+    var(--radius-pill);
+
+  background:
+    var(--color-border-strong);
+
+  transition:
+    width
+      var(--transition-base),
+    background
+      var(--transition-base),
+    transform
+      var(--transition-base);
+}
+
+.sa-hero__slider-nav
+button:hover span {
+  background:
+    var(--color-primary-soft);
+
+  transform:
+    scale(1.12);
+}
+
+.sa-hero__slider-nav
+button.is-active span {
+  width: 18px;
+
+  background:
+    var(--color-primary);
+}
+
+/* ========================================================================
+   ANIMATIONS
+   ======================================================================== */
+
+@keyframes saUnderline {
+  from {
+    opacity: 0;
+
+    transform:
+      scaleX(0)
+      rotate(-1deg);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scaleX(1)
+      rotate(-1deg);
+  }
+}
+
+@keyframes saAmbientOne {
+  from {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      scale(1);
+  }
+
+  to {
+    transform:
+      translate3d(
+        -45px,
+        38px,
+        0
+      )
+      scale(1.08);
+  }
+}
+
+@keyframes saAmbientTwo {
+  from {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      scale(1);
+  }
+
+  to {
+    transform:
+      translate3d(
+        52px,
+        -31px,
+        0
+      )
+      scale(1.1);
+  }
+}
+
+@keyframes saAmbientThree {
+  from {
+    transform:
+      translate3d(
+        0,
+        -12px,
+        0
+      );
+  }
+
+  to {
+    transform:
+      translate3d(
+        28px,
+        22px,
+        0
+      );
+  }
+}
+
+@keyframes saVisualGlow {
+  from {
+    opacity: 0.7;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(1.08);
+  }
+}
+
+@keyframes saRingSpin {
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
+@keyframes saRingSpinReverse {
+  to {
+    transform:
+      rotate(-360deg);
+  }
+}
+
+@keyframes saPrimaryShape {
+  0% {
+    border-radius:
+      48% 52% 61% 39%
+      /
+      58% 37% 63% 42%;
+
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      rotate(10deg);
+  }
+
+  50% {
+    border-radius:
+      58% 42% 43% 57%
+      /
+      39% 61% 39% 61%;
+
+    transform:
+      translate3d(
+        -10px,
+        -13px,
+        0
+      )
+      rotate(14deg);
+  }
+
+  100% {
+    border-radius:
+      42% 58% 55% 45%
+      /
+      62% 38% 62% 38%;
+
+    transform:
+      translate3d(
+        9px,
+        7px,
+        0
+      )
+      rotate(7deg);
+  }
+}
+
+@keyframes saSecondaryShape {
+  from {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      rotate(-8deg)
+      scale(1);
+  }
+
+  to {
+    transform:
+      translate3d(
+        14px,
+        13px,
+        0
+      )
+      rotate(-2deg)
+      scale(1.07);
+  }
+}
+
+@keyframes saDarkShape {
+  from {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      rotate(-24deg);
+  }
+
+  to {
+    transform:
+      translate3d(
+        -15px,
+        15px,
+        0
+      )
+      rotate(-17deg);
+  }
+}
+
+@keyframes saOutlineMove {
+  from {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      rotate(-13deg);
+  }
+
+  to {
+    transform:
+      translate3d(
+        -10px,
+        -14px,
+        0
+      )
+      rotate(-5deg);
+  }
+}
+
+@keyframes saDotsFloat {
+  from {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      );
+  }
+
+  to {
+    transform:
+      translate3d(
+        10px,
+        -13px,
+        0
+      );
+  }
+}
+
+@keyframes saParticleOne {
+  0%,
+  100% {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      );
+  }
+
+  50% {
+    transform:
+      translate3d(
+        20px,
+        13px,
+        0
+      );
+  }
+}
+
+@keyframes saParticleTwo {
+  0%,
+  100% {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      );
+  }
+
+  50% {
+    transform:
+      translate3d(
+        -16px,
+        -15px,
+        0
+      );
+  }
+}
+
+@keyframes saParticleThree {
+  0%,
+  100% {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(
+        16px,
+        -22px,
+        0
+      )
+      scale(1.5);
+  }
+}
+
+@keyframes saBacklightPulse {
+  from {
+    opacity: 0.5;
+
+    transform:
+      translateX(-50%)
+      scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      scale(1.08);
+  }
+}
+
+@keyframes saTeacherEntrance {
+  0% {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        16px,
+        18px,
+        0
+      )
+      scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      scale(1);
+  }
+}
+
+@keyframes saGroundShadow {
+  from {
+    opacity: 0.45;
+
+    transform:
+      scaleX(0.84);
+  }
+
+  to {
+    opacity: 0.75;
+
+    transform:
+      scaleX(1);
+  }
+}
+
+@keyframes saCardEntrance {
+  from {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        16px,
+        16px,
+        0
+      )
+      scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      scale(1);
+  }
+}
+
+@keyframes saProgramFloat {
+  0%,
+  100% {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      );
+  }
+
+  50% {
+    transform:
+      translate3d(
+        0,
+        -7px,
+        0
+      )
+      rotate(0.7deg);
+  }
+}
+
+@keyframes saSessionFloat {
+  0%,
+  100% {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      );
+  }
+
+  50% {
+    transform:
+      translate3d(
+        0,
+        -6px,
+        0
+      );
+  }
+}
+
+@keyframes saTextReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+/* ========================================================================
+   TABLET
+   ======================================================================== */
+
+@media (max-width: 1080px) {
+  .site-container.sa-hero__grid {
+    width:
+      min(
+        calc(100% - 40px),
+        960px
+      );
+  }
+
+  .sa-hero__grid {
+    min-height: auto;
+
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+    padding-top: 46px;
+    padding-bottom: 48px;
+  }
+
+  .sa-hero__content {
+    max-width: 760px;
+
+    margin-inline: auto;
+
+    text-align: center;
+  }
+
+  .sa-hero__title-line {
+    margin-inline: auto;
+  }
+
+  .sa-hero__copy {
+    max-width: 680px;
+
+    margin-inline: auto;
+  }
+
+  .sa-hero__actions,
+  .sa-hero__features {
+    justify-content: center;
+  }
+
+  .sa-hero__visual {
+    width:
+      min(
+        100%,
+        650px
+      );
+
+    min-height: 530px;
+
+    margin:
+      8px
+      auto
+      0;
+  }
+
+  .sa-hero__portrait-shell {
+    right: 72px;
+
+    width: 450px;
+  }
+}
+
+/* ========================================================================
+   MOBILE
+   ======================================================================== */
+
+@media (max-width: 650px) {
+  .site-container.sa-hero__grid {
+    width:
+      min(
+        calc(100% - 28px),
+        620px
+      );
+  }
+
+  .sa-hero__grid {
+    gap: 0;
+
+    padding-top: 26px;
+    padding-bottom: 34px;
+  }
+
+  .sa-hero__content {
+    padding-block:
+      18px
+      22px;
+  }
+
+  .sa-hero__eyebrow {
+    margin-bottom: 10px;
+
+    font-size: 0.76rem;
+  }
+
+  .sa-hero__title {
+    font-size:
+      clamp(
+        2.25rem,
+        10.3vw,
+        3rem
+      );
+
+    line-height: 1;
+
+    letter-spacing: -0.055em;
+  }
+
+  .sa-hero__title-line {
+    width: 100%;
+  }
+
+  .sa-hero__title-highlight::after {
+    bottom: -6px;
+
+    height: 3px;
+  }
+
+  .sa-hero__copy {
+    margin-top: 21px;
+
+    font-size: 0.88rem;
+
+    line-height: 1.7;
+  }
+
+  /* buttons */
+
+  .sa-hero__actions {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+    margin-top: 24px;
+  }
+
+  .sa-hero__actions a {
+    width: 100%;
+  }
+
+  /* features */
+
+  .sa-hero__features {
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+
+    gap: 9px;
+
+    margin-top: 25px;
+  }
+
+  .sa-hero__feature {
+    min-width: 0;
+    max-width: none;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-size: 0.61rem;
+
+    text-align: center;
+  }
+
+  .sa-hero__feature-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-basis: 38px;
+  }
+
+  /* visual */
+
+  .sa-hero__visual {
+    width: 100%;
+
+    min-height: 420px;
+
+    margin-top: 4px;
+  }
+
+  .sa-hero__visual-glow {
+    width: 330px;
+    height: 330px;
+  }
+
+  /* professor image */
+
+  .sa-hero__portrait-shell {
+    right: auto;
+    bottom: 0;
+    left: 50%;
+
+    width:
+      min(
+        88vw,
+        345px
+      );
+
+    height: 405px;
+
+    transform:
+      translateX(-50%);
+  }
+
+  .sa-hero__teacher {
+    filter:
+      drop-shadow(
+        0
+        20px
+        18px
+        rgba(
+          16,
+          21,
+          27,
+          0.17
+        )
+      );
+  }
+
+  /* rings */
+
+  .sa-hero__ring--outer {
+    top: 47px;
+
+    right:
+      calc(
+        50% - 158px
+      );
+
+    width: 316px;
+    height: 316px;
+  }
+
+  .sa-hero__ring--inner {
+    top: 83px;
+
+    right:
+      calc(
+        50% - 124px
+      );
+
+    width: 248px;
+    height: 248px;
+  }
+
+  /* purple art */
+
+  .sa-hero__shape--primary {
+    top: 112px;
+
+    right:
+      calc(
+        50% - 157px
+      );
+
+    width: 292px;
+    height: 242px;
+  }
+
+  .sa-hero__shape--secondary {
+    top: 150px;
+
+    right:
+      calc(
+        50% - 157px
+      );
+
+    width: 210px;
+    height: 180px;
+  }
+
+  .sa-hero__shape--dark {
+    top: 105px;
+
+    right:
+      calc(
+        50% + 56px
+      );
+
+    width: 118px;
+    height: 70px;
+  }
+
+  .sa-hero__shape--outline {
+    top: 190px;
+
+    right: -20px;
+
+    width: 120px;
+    height: 180px;
+  }
+
+  /* dots */
+
+  .sa-hero__dots {
+    bottom: 66px;
+    left: 0;
+
+    width: 64px;
+    height: 64px;
+
+    background-size:
+      9px
+      9px;
+  }
+
+  /* floating particles */
+
+  .sa-hero__particle--one {
+    top: 62px;
+    left: 12px;
+  }
+
+  .sa-hero__particle--two {
+    right: 5px;
+    bottom: 105px;
+  }
+
+  .sa-hero__particle--three {
+    left: 18px;
+  }
+
+  /* program card */
+
+  .sa-hero__program-card {
+    top: 14px;
+    right: 0;
+
+    width: 132px;
+
+    min-height: 88px;
+
+    padding: 9px;
+
+    border-radius: 12px;
+  }
+
+  .sa-hero__program-card-top {
+    min-height: 36px;
+  }
+
+  .sa-hero__program-card img {
+    width: 102px;
+    height: 28px;
+  }
+
+  .sa-hero__program-card small {
+    font-size: 0.48rem;
+  }
+
+  .sa-hero__program-card
+  > strong {
+    margin-top: 4px;
+
+    font-size: 0.61rem;
+  }
+
+  /* session */
+
+  .sa-hero__session-card {
+    right: 0;
+    bottom: 22px;
+
+    width: 180px;
+
+    padding:
+      14px
+      14px
+      13px;
+
+    border-radius: 12px;
+  }
+
+  .sa-hero__session-subject {
+    font-size: 0.62rem;
+  }
+
+  .sa-hero__session-teacher {
+    font-size: 0.78rem;
+  }
+
+  .sa-hero__session-ribbon {
+    margin-top: 6px;
+
+    padding:
+      4px
+      6px;
+
+    font-size: 0.49rem;
+  }
+
+  .sa-hero__session-card em {
+    margin-top: 5px;
+
+    font-size: 1.18rem;
+  }
+
+  /* slider */
+
+  .sa-hero__slider-nav {
+    right: auto;
+    bottom: 5px;
+    left: 5px;
+  }
+}
+
+/* ========================================================================
+   EXTRA SMALL MOBILE
+   ======================================================================== */
+
+@media (max-width: 390px) {
+  .sa-hero__title {
+    font-size: 2.14rem;
+  }
+
+  .sa-hero__visual {
+    min-height: 390px;
+  }
+
+  .sa-hero__portrait-shell {
+    width: 300px;
+    height: 375px;
+  }
+
+  .sa-hero__ring--outer {
+    right:
+      calc(
+        50% - 143px
+      );
+
+    width: 286px;
+    height: 286px;
+  }
+
+  .sa-hero__ring--inner {
+    right:
+      calc(
+        50% - 110px
+      );
+
+    width: 220px;
+    height: 220px;
+  }
+
+  .sa-hero__shape--primary {
+    top: 104px;
+
+    right:
+      calc(
+        50% - 143px
+      );
+
+    width: 265px;
+    height: 218px;
+  }
+
+  .sa-hero__shape--secondary {
+    width: 188px;
+    height: 156px;
+  }
+
+  .sa-hero__program-card {
+    width: 118px;
+  }
+
+  .sa-hero__session-card {
+    width: 166px;
+  }
+}
+
+/* ========================================================================
+   REDUCED MOTION
+   ======================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .sa-hero__ambient,
+  .sa-hero__visual-glow,
+  .sa-hero__ring,
+  .sa-hero__shape,
+  .sa-hero__dots,
+  .sa-hero__particle,
+  .sa-hero__portrait-backlight,
+  .sa-hero__portrait-ground-shadow,
+  .sa-hero__program-card,
+  .sa-hero__session-card,
+  .sa-hero__teacher {
+    animation: none !important;
+  }
+}

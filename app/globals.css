@@ -1,0 +1,1292 @@
+@import "./_shared/Navbar/Navbar.css";
+@import "./_shared/Footer/Footer.css";
+@import "./_shared/SiteEffects/SiteEffects.css";
+
+@import "./academy/components/Hero/Hero.css";
+@import "./academy/components/Programs/Programs.css";
+@import "./academy/components/Subjects/Subjects.css";
+@import "./academy/components/SkillCourses/SkillCourses.css";
+@import "./academy/components/WhyChooseUs/WhyChooseUs.css";
+@import "./academy/components/AdmissionProcess/AdmissionProcess.css";
+@import "./academy/components/CTABanner/CTABanner.css";
+
+@import "./registration/components/RegistrationHero/RegistrationHero.css";
+@import "./registration/components/RegistrationForm/RegistrationForm.css";
+
+
+@import "./contact/components/ContactHero/ContactHero.css";
+@import "./contact/components/ContactDetails/ContactDetails.css";
+
+
+/* ========================================================================
+   SILVER ACADEMY
+   GLOBAL DESIGN SYSTEM
+   ========================================================================
+
+   IMPORTANT
+   ---------
+
+   This is the MAIN WEBSITE THEME FILE.
+
+   Website-wide:
+
+   ✓ Colors
+   ✓ Fonts
+   ✓ Shadows
+   ✓ Border radius
+   ✓ Layout width
+   ✓ Section spacing
+   ✓ Animation timing
+   ✓ Navbar height
+   ✓ Shared buttons
+   ✓ Global typography
+
+   should all be controlled here.
+
+   ------------------------------------------------------------------------
+   FUTURE COLOR CHANGE EXAMPLE
+   ------------------------------------------------------------------------
+
+   If Silver Academy later changes from:
+
+   Purple + Gold
+
+   to:
+
+   Blue + Orange
+
+   you should mainly modify the variables in the COLOR section below.
+
+   Components should NOT contain their own permanent HEX colors.
+
+   ------------------------------------------------------------------------
+   FUTURE FONT CHANGE EXAMPLE
+   ------------------------------------------------------------------------
+
+   Change:
+
+   --font-primary
+   --font-heading
+   --font-display
+
+   here and the complete website typography can be updated.
+
+   ======================================================================== */
+
+
+:root {
+
+  /* ======================================================================
+     1. WEBSITE COLORS
+     ====================================================================== */
+
+
+  /* ----------------------------------------------------------------------
+     PAGE / SURFACE COLORS
+     ---------------------------------------------------------------------- */
+
+  --color-page: #ffffff;
+
+  /* Main website background */
+
+
+  --color-surface: #fbfafc;
+
+  /* Light alternate section */
+
+
+  --color-surface-strong: #f4f1f7;
+
+  /* Stronger alternate background */
+
+
+  --color-card: #ffffff;
+
+  /* Cards, dropdowns, floating panels */
+
+
+  /* ----------------------------------------------------------------------
+     TEXT COLORS
+     ---------------------------------------------------------------------- */
+
+  --color-text: #15181d;
+
+  /* Main heading / strong text */
+
+
+  --color-text-soft: #2e3138;
+
+  /* Secondary dark text */
+
+
+  --color-muted: #6b6872;
+
+  /* Paragraph text */
+
+
+  --color-muted-light: #a6a1ad;
+
+  /* Very subtle text */
+
+
+  /* ----------------------------------------------------------------------
+     SILVER ACADEMY PURPLE
+     ---------------------------------------------------------------------- */
+
+  --color-primary: #5a2b84;
+
+  /* Main purple */
+
+
+  --color-primary-deep: #3a145a;
+
+  /* Dark purple */
+
+
+  --color-primary-rich: #6e349d;
+
+  /* Bright purple */
+
+
+  --color-primary-soft: #9a72b7;
+
+  /* Soft purple */
+
+
+  --color-primary-pale: #f2ebf7;
+
+  /* Light purple background */
+
+
+  /* ----------------------------------------------------------------------
+     SILVER ACADEMY GOLD
+     ---------------------------------------------------------------------- */
+
+  --color-accent: #f6ad00;
+
+  /* Main gold */
+
+
+  --color-accent-deep: #e79b00;
+
+  /* Dark gold */
+
+
+  --color-accent-soft: #ffc84b;
+
+  /* Light gold */
+
+
+  --color-accent-pale: #fff6d9;
+
+  /* Light gold background */
+
+
+  /* ----------------------------------------------------------------------
+     DARK SECTIONS / NAVBAR
+     ---------------------------------------------------------------------- */
+
+  --color-dark: #10151b;
+
+  /* Main navbar / dark section */
+
+
+  --color-dark-soft: #171e25;
+
+  /* Secondary dark */
+
+
+  --color-dark-lifted: #202831;
+
+  /* Raised dark surface */
+
+
+  --color-on-dark: #ffffff;
+
+  /* White text */
+
+
+  --color-on-dark-muted: #c8cbd0;
+
+  /* Muted navigation text */
+
+
+  /* ----------------------------------------------------------------------
+     BORDERS
+     ---------------------------------------------------------------------- */
+
+  --color-border: #e9e5ec;
+
+  --color-border-strong: #d9d2de;
+
+
+  /* ----------------------------------------------------------------------
+     STATUS COLORS
+     ---------------------------------------------------------------------- */
+
+  --color-success: #2eaa6f;
+
+
+  /* ----------------------------------------------------------------------
+     TRANSPARENT
+     ---------------------------------------------------------------------- */
+
+  --color-transparent: transparent;
+
+
+  /* ======================================================================
+     2. OVERLAY / GLASS / SHADOW COLORS
+     ====================================================================== */
+
+  --color-shadow-soft:
+    rgba(16, 21, 27, 0.07);
+
+  --color-shadow-medium:
+    rgba(16, 21, 27, 0.12);
+
+  --color-shadow-strong:
+    rgba(16, 21, 27, 0.18);
+
+
+  --color-primary-shadow:
+    rgba(90, 43, 132, 0.24);
+
+  --color-accent-shadow:
+    rgba(246, 173, 0, 0.25);
+
+
+  --color-glass:
+    rgba(255, 255, 255, 0.86);
+
+  --color-dark-glass:
+    rgba(16, 21, 27, 0.96);
+
+
+  --color-white-faint:
+    rgba(255, 255, 255, 0.07);
+
+  --color-white-soft:
+    rgba(255, 255, 255, 0.16);
+
+
+  --color-purple-faint:
+    rgba(90, 43, 132, 0.08);
+
+  --color-purple-soft:
+    rgba(90, 43, 132, 0.16);
+
+
+  --color-gold-faint:
+    rgba(246, 173, 0, 0.1);
+
+
+  --color-black-faint:
+    rgba(16, 21, 27, 0.05);
+
+
+  --color-backdrop:
+    rgba(16, 21, 27, 0.46);
+
+
+  /* ======================================================================
+     3. WEBSITE TYPOGRAPHY
+     ======================================================================
+
+     CHANGE WEBSITE FONTS HERE.
+
+     Example:
+
+     --font-primary:
+       "Inter",
+       Arial,
+       sans-serif;
+
+     OR:
+
+     --font-primary:
+       "Montserrat",
+       Arial,
+       sans-serif;
+
+     If later you add a local font using @font-face,
+     simply put that font name here.
+     ====================================================================== */
+
+
+  --font-primary:
+    var(--font-poppins),
+    "Poppins",
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+
+  /* Main website font */
+
+
+  --font-heading:
+    var(--font-montserrat),
+    var(--font-primary);
+
+
+  /* Headings can use a different font later */
+
+
+  --font-display:
+    var(--font-heading);
+
+
+  /* Large Hero headings */
+
+
+  --font-mono:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+
+  /* ======================================================================
+     4. FONT WEIGHTS
+     ====================================================================== */
+
+  --font-weight-regular: 400;
+
+  --font-weight-medium: 500;
+
+  --font-weight-semibold: 600;
+
+  --font-weight-bold: 700;
+
+  --font-weight-extrabold: 800;
+
+  --font-weight-black: 900;
+
+
+  /* ======================================================================
+     5. GLOBAL LAYOUT
+     ====================================================================== */
+
+  --site-width: 1180px;
+
+  /*
+   * Main inner content width.
+   *
+   * Navbar is intentionally NOT restricted by this width
+   * because its black section should reach the right edge.
+   */
+
+
+  --section-space:
+    clamp(76px, 8vw, 116px);
+
+
+  /* Desktop navbar height */
+
+  --nav-height: 86px;
+
+
+  /* ======================================================================
+     6. BORDER RADIUS
+     ====================================================================== */
+
+  --radius-xs: 8px;
+
+  --radius-sm: 12px;
+
+  --radius-md: 18px;
+
+  --radius-lg: 26px;
+
+  --radius-xl: 38px;
+
+  --radius-pill: 999px;
+
+
+  /* ======================================================================
+     7. SHADOWS
+     ====================================================================== */
+
+  --shadow-xs:
+    0 4px 16px
+    var(--color-shadow-soft);
+
+
+  --shadow-sm:
+    0 10px 30px
+    var(--color-shadow-soft);
+
+
+  --shadow-md:
+    0 18px 48px
+    var(--color-shadow-medium);
+
+
+  --shadow-lg:
+    0 30px 76px
+    var(--color-shadow-strong);
+
+
+  --shadow-xl:
+    0 38px 96px
+    rgba(16, 21, 27, 0.22);
+
+
+  --shadow-primary:
+    0 20px 54px
+    var(--color-primary-shadow);
+
+
+  --shadow-accent:
+    0 12px 32px
+    var(--color-accent-shadow);
+
+
+  /* ======================================================================
+     8. GRADIENTS
+     ====================================================================== */
+
+  --gradient-primary:
+    linear-gradient(
+      135deg,
+      var(--color-primary-rich),
+      var(--color-primary-deep)
+    );
+
+
+  --gradient-primary-wide:
+    linear-gradient(
+      115deg,
+      var(--color-primary-deep),
+      var(--color-primary),
+      var(--color-primary-rich)
+    );
+
+
+  --gradient-accent:
+    linear-gradient(
+      135deg,
+      var(--color-accent-soft),
+      var(--color-accent)
+    );
+
+
+  --gradient-dark:
+    linear-gradient(
+      120deg,
+      var(--color-dark),
+      var(--color-dark-soft)
+    );
+
+
+  --gradient-dark-radial:
+    radial-gradient(
+      circle at top,
+      var(--color-dark-lifted),
+      var(--color-dark)
+    );
+
+
+  --gradient-hero-orb:
+    linear-gradient(
+      150deg,
+      var(--color-primary-rich),
+      var(--color-primary-deep)
+    );
+
+
+  --gradient-card-glow:
+    radial-gradient(
+      circle at top right,
+      var(--color-purple-faint),
+      var(--color-transparent) 48%
+    );
+
+
+  --gradient-cta:
+    linear-gradient(
+      110deg,
+      var(--color-primary-deep),
+      var(--color-primary),
+      var(--color-primary-rich)
+    );
+
+
+  /* ======================================================================
+     9. ANIMATION / MOTION
+     ====================================================================== */
+
+  --ease-standard:
+    cubic-bezier(
+      0.2,
+      0.7,
+      0.2,
+      1
+    );
+
+
+  --ease-smooth:
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+
+
+  --ease-spring:
+    cubic-bezier(
+      0.2,
+      0.9,
+      0.25,
+      1.25
+    );
+
+
+  --transition-fast:
+    160ms
+    var(--ease-standard);
+
+
+  --transition-base:
+    260ms
+    var(--ease-standard);
+
+
+  --transition-slow:
+    520ms
+    var(--ease-smooth);
+}
+
+
+/* ========================================================================
+   CSS RESET
+   ======================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+html {
+  margin: 0;
+
+  scroll-behavior: smooth;
+
+  /*
+   * Prevent sticky navbar from covering
+   * sections after anchor navigation.
+   */
+
+  scroll-padding-top:
+    calc(
+      var(--nav-height)
+      +
+      24px
+    );
+}
+
+
+body {
+  margin: 0;
+
+  min-width: 320px;
+
+  overflow-x: hidden;
+
+  background:
+    var(--color-page);
+
+  color:
+    var(--color-text);
+
+  font-family:
+    var(--font-primary);
+
+  font-weight:
+    var(--font-weight-regular);
+
+  -webkit-font-smoothing:
+    antialiased;
+
+  -moz-osx-font-smoothing:
+    grayscale;
+
+  text-rendering:
+    optimizeLegibility;
+}
+
+
+/*
+ * Prevent background page scrolling while
+ * mobile navigation is open.
+ */
+
+
+.site-body {
+  min-height: 100vh;
+}
+
+body.is-menu-open {
+  overflow: hidden;
+}
+
+
+/* ========================================================================
+   GLOBAL SELECTION
+   ======================================================================== */
+
+::selection {
+  background:
+    var(--color-primary);
+
+  color:
+    var(--color-on-dark);
+}
+
+
+/* ========================================================================
+   GLOBAL TYPOGRAPHY
+   ======================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family:
+    var(--font-heading);
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+
+button,
+a,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+}
+
+
+button {
+  padding: 0;
+
+  border: 0;
+}
+
+
+button,
+a {
+  -webkit-tap-highlight-color:
+    var(--color-transparent);
+}
+
+
+img,
+svg {
+  display: block;
+
+  max-width: 100%;
+}
+
+
+/* ========================================================================
+   ACCESSIBILITY
+   ======================================================================== */
+
+:focus-visible {
+  outline:
+    3px solid
+    var(--color-accent);
+
+  outline-offset: 4px;
+}
+
+
+/* ========================================================================
+   MAIN CONTENT CONTAINER
+   ======================================================================== */
+
+.site-container {
+  width:
+    min(
+      calc(100% - 40px),
+      var(--site-width)
+    );
+
+  margin-inline: auto;
+}
+
+
+/* ========================================================================
+   SECTION TYPOGRAPHY
+   ======================================================================== */
+
+.section-head {
+  max-width: 740px;
+
+  margin-inline: auto;
+
+  text-align: center;
+}
+
+
+.section-kicker {
+  margin:
+    0
+    0
+    8px;
+
+  color:
+    var(--color-accent-deep);
+
+  font-size: 0.76rem;
+
+  font-weight:
+    var(--font-weight-extrabold);
+
+  letter-spacing: 0.055em;
+
+  text-transform: uppercase;
+}
+
+
+.section-title {
+  margin: 0;
+
+  color:
+    var(--color-text);
+
+  font-family:
+    var(--font-heading);
+
+  font-size:
+    clamp(
+      1.95rem,
+      3vw,
+      2.85rem
+    );
+
+  font-weight:
+    var(--font-weight-extrabold);
+
+  line-height: 1.1;
+
+  letter-spacing: -0.04em;
+}
+
+
+.section-title-center {
+  text-align: center;
+}
+
+
+.section-description {
+  max-width: 660px;
+
+  margin:
+    16px
+    auto
+    0;
+
+  color:
+    var(--color-muted);
+
+  font-size: 0.94rem;
+
+  line-height: 1.75;
+}
+
+
+/* ========================================================================
+   TITLE UNDERLINE
+   ======================================================================== */
+
+.title-underline {
+  position: relative;
+
+  width: 48px;
+  height: 3px;
+
+  margin:
+    15px
+    auto
+    0;
+
+  overflow: hidden;
+
+  border-radius:
+    var(--radius-pill);
+
+  background:
+    var(--color-border);
+}
+
+
+.title-underline::after {
+  position: absolute;
+
+  inset: 0;
+
+  width: 70%;
+
+  border-radius: inherit;
+
+  background:
+    var(--color-accent);
+
+  content: "";
+}
+
+
+/* ========================================================================
+   SHARED BUTTON SYSTEM
+   ======================================================================== */
+
+.primary-button,
+.secondary-button,
+.dark-outline-button,
+.text-link {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  font-family:
+    var(--font-primary);
+
+  font-weight:
+    var(--font-weight-extrabold);
+
+  cursor: pointer;
+
+  transition:
+    transform
+      var(--transition-base),
+    box-shadow
+      var(--transition-base),
+    border-color
+      var(--transition-base),
+    background
+      var(--transition-base),
+    color
+      var(--transition-base);
+}
+
+
+.primary-button,
+.secondary-button,
+.dark-outline-button {
+  min-height: 48px;
+
+  padding:
+    0
+    22px;
+
+  border-radius:
+    var(--radius-pill);
+
+  font-size: 0.83rem;
+}
+
+
+.primary-button {
+  background:
+    var(--gradient-accent);
+
+  color:
+    var(--color-text);
+
+  box-shadow:
+    var(--shadow-accent);
+}
+
+
+.secondary-button {
+  border:
+    1px solid
+    var(--color-border-strong);
+
+  background:
+    var(--color-card);
+
+  color:
+    var(--color-text);
+
+  box-shadow:
+    var(--shadow-xs);
+}
+
+
+.dark-outline-button {
+  border:
+    1px solid
+    var(--color-accent);
+
+  background:
+    var(--color-transparent);
+
+  color:
+    var(--color-on-dark);
+}
+
+
+.text-link {
+  justify-content:
+    flex-start;
+
+  color:
+    var(--color-text);
+
+  font-size: 0.82rem;
+}
+
+
+.primary-button:hover,
+.secondary-button:hover,
+.dark-outline-button:hover {
+  transform:
+    translateY(-3px);
+}
+
+
+.primary-button:hover {
+  box-shadow:
+    var(--shadow-md);
+}
+
+
+.secondary-button:hover {
+  border-color:
+    var(--color-primary-soft);
+
+  box-shadow:
+    var(--shadow-md);
+}
+
+
+.dark-outline-button:hover {
+  background:
+    var(--color-accent);
+
+  color:
+    var(--color-text);
+
+  box-shadow:
+    var(--shadow-accent);
+}
+
+
+.primary-button svg,
+.secondary-button svg,
+.dark-outline-button svg,
+.text-link svg {
+  flex: 0 0 auto;
+
+  transition:
+    transform
+      var(--transition-base);
+}
+
+
+.primary-button:hover svg,
+.secondary-button:hover svg,
+.dark-outline-button:hover svg,
+.text-link:hover svg {
+  transform:
+    translateX(4px);
+}
+
+
+/* ========================================================================
+   COMMON SURFACE SECTION
+   ======================================================================== */
+
+.surface-section {
+  background:
+    var(--color-surface);
+}
+
+
+/* ========================================================================
+   ACCESSIBILITY UTILITY
+   ======================================================================== */
+
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+
+  margin: -1px;
+
+  overflow: hidden;
+
+  clip:
+    rect(
+      0,
+      0,
+      0,
+      0
+    );
+
+  white-space: nowrap;
+
+  border: 0;
+}
+
+/* ========================================================================
+   SILVER ACADEMY — PREMIUM THEMED SCROLLBAR
+   ======================================================================== */
+
+/*
+ * Firefox
+ */
+html {
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    var(--color-primary)
+    var(--color-surface-strong);
+}
+
+
+/*
+ * Chrome / Edge / Safari
+ */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+
+/* ========================================================================
+   TRACK
+   ======================================================================== */
+
+::-webkit-scrollbar-track {
+  border-radius:
+    var(--radius-pill);
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-surface),
+      var(--color-surface-strong)
+    );
+
+  box-shadow:
+    inset
+    0
+    0
+    0
+    1px
+    var(--color-border);
+}
+
+
+/* ========================================================================
+   THUMB
+   ======================================================================== */
+
+::-webkit-scrollbar-thumb {
+  min-height: 70px;
+
+  border:
+    3px
+    solid
+    transparent;
+
+  border-radius:
+    var(--radius-pill);
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-primary-rich) 0%,
+      var(--color-primary) 50%,
+      var(--color-primary-deep) 100%
+    );
+
+  background-clip:
+    padding-box;
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.26),
+
+    inset
+    0
+    -1px
+    0
+    rgba(0, 0, 0, 0.08),
+
+    0
+    4px
+    12px
+    rgba(90, 43, 132, 0.18);
+
+  transition:
+    background
+      var(--transition-base),
+    box-shadow
+      var(--transition-base);
+}
+
+
+/* ========================================================================
+   HOVER
+   ======================================================================== */
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-accent-soft) 0%,
+      var(--color-accent) 58%,
+      var(--color-accent-deep) 100%
+    );
+
+  background-clip:
+    padding-box;
+
+  box-shadow:
+    inset
+    0
+    1px
+    0
+    rgba(255, 255, 255, 0.42),
+
+    0
+    5px
+    15px
+    var(--color-accent-shadow);
+}
+
+
+/* ========================================================================
+   ACTIVE / DRAGGING
+   ======================================================================== */
+
+::-webkit-scrollbar-thumb:active {
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-primary),
+      var(--color-primary-deep)
+    );
+
+  background-clip:
+    padding-box;
+}
+
+
+/* ========================================================================
+   CORNER
+   ======================================================================== */
+
+::-webkit-scrollbar-corner {
+  background:
+    var(--color-surface-strong);
+}
+
+/* ========================================================================
+   TABLET GLOBAL SETTINGS
+   ======================================================================== */
+
+@media (max-width: 1024px) {
+
+  :root {
+    --nav-height: 72px;
+  }
+}
+
+
+/* ========================================================================
+   MOBILE GLOBAL SETTINGS
+   ======================================================================== */
+
+@media (max-width: 640px) {
+
+  :root {
+    --section-space: 64px;
+
+    --nav-height: 66px;
+  }
+
+
+  .site-container {
+    width:
+      min(
+        calc(100% - 28px),
+        var(--site-width)
+      );
+  }
+
+
+  .primary-button,
+  .secondary-button,
+  .dark-outline-button {
+    min-height: 46px;
+
+    padding-inline: 18px;
+  }
+}
+
+
+/* ========================================================================
+   REDUCED MOTION ACCESSIBILITY
+   ======================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+
+  *,
+  *::before,
+  *::after {
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    scroll-behavior:
+      auto !important;
+
+    transition-duration:
+      0.01ms !important;
+  }
+}

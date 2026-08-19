@@ -1,0 +1,448 @@
+/* ========================================================================
+   SILVER ACADEMY — REGISTRATION HERO
+   Uses the same tokens already defined in globals.css.
+   ======================================================================== */
+
+.sa-registration-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+  background:
+    radial-gradient(circle at 88% 18%, var(--color-primary-pale), transparent 32%),
+    radial-gradient(circle at 5% 110%, var(--color-accent-pale), transparent 28%),
+    var(--color-page);
+}
+
+.sa-registration-hero__inner {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  min-height: 350px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  padding-top: 54px;
+  padding-bottom: 58px;
+}
+
+.sa-registration-hero__content {
+  position: relative;
+  z-index: 5;
+  max-width: 720px;
+}
+
+.sa-registration-hero__back {
+  display: inline-flex;
+  width: max-content;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 22px;
+  color: var(--color-muted);
+  font-size: 0.76rem;
+  font-weight: 750;
+  transition:
+    color var(--transition-base),
+    transform var(--transition-base);
+}
+
+.sa-registration-hero__back:hover {
+  color: var(--color-primary);
+  transform: translateX(-3px);
+}
+
+.sa-registration-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 12px;
+  color: var(--color-primary);
+  font-size: 0.76rem;
+  font-weight: 850;
+}
+
+.sa-registration-hero__eyebrow svg {
+  color: var(--color-accent);
+}
+
+.sa-registration-hero__title {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-display, var(--font-sans));
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  font-weight: 850;
+  line-height: 0.98;
+  letter-spacing: -0.057em;
+}
+
+.sa-registration-hero__title span {
+  position: relative;
+  color: var(--color-primary);
+}
+
+.sa-registration-hero__title span::after {
+  position: absolute;
+  right: 2%;
+  bottom: -7px;
+  width: 36%;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  content: "";
+  transform: rotate(-1deg);
+}
+
+.sa-registration-hero__copy {
+  max-width: 610px;
+  margin: 21px 0 0;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.sa-registration-hero__badge {
+  position: relative;
+  z-index: 7;
+  display: flex;
+  width: min(100%, 260px);
+  flex: 0 0 260px;
+  align-items: center;
+  gap: 13px;
+  padding: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-glass);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(15px);
+  animation: saRegHeroBadgeFloat 5.6s ease-in-out infinite;
+}
+
+.sa-registration-hero__badge-icon {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--color-primary-pale);
+  color: var(--color-primary);
+}
+
+.sa-registration-hero__badge-copy small,
+.sa-registration-hero__badge-copy strong,
+.sa-registration-hero__badge-copy em {
+  display: block;
+}
+
+.sa-registration-hero__badge-copy small {
+  color: var(--color-accent-deep);
+  font-size: 0.56rem;
+  font-weight: 900;
+  letter-spacing: 0.075em;
+}
+
+.sa-registration-hero__badge-copy strong {
+  margin-top: 2px;
+  color: var(--color-text);
+  font-size: 0.86rem;
+}
+
+.sa-registration-hero__badge-copy em {
+  margin-top: 2px;
+  color: var(--color-muted);
+  font-size: 0.61rem;
+  font-style: normal;
+}
+
+/* Decorative atmosphere */
+
+.sa-registration-hero__ambient,
+.sa-registration-hero__ring,
+.sa-registration-hero__shape,
+.sa-registration-hero__dots,
+.sa-registration-hero__particle {
+  position: absolute;
+  pointer-events: none;
+}
+
+.sa-registration-hero__ambient {
+  z-index: -3;
+  border-radius: 50%;
+}
+
+.sa-registration-hero__ambient--one {
+  top: -250px;
+  right: -160px;
+  width: 570px;
+  height: 570px;
+  background:
+    radial-gradient(circle, var(--color-primary-pale), transparent 68%);
+  animation: saRegHeroAmbientOne 13s ease-in-out infinite alternate;
+}
+
+.sa-registration-hero__ambient--two {
+  bottom: -330px;
+  left: -240px;
+  width: 620px;
+  height: 620px;
+  background:
+    radial-gradient(circle, var(--color-accent-pale), transparent 68%);
+  animation: saRegHeroAmbientTwo 16s ease-in-out infinite alternate;
+}
+
+.sa-registration-hero__ring {
+  z-index: 0;
+  border-radius: 50%;
+}
+
+.sa-registration-hero__ring--one {
+  top: -50px;
+  right: 6%;
+  width: 370px;
+  height: 370px;
+  border: 1px solid var(--color-primary-soft);
+  opacity: 0.4;
+  animation: saRegHeroSpin 25s linear infinite;
+}
+
+.sa-registration-hero__ring--one::after {
+  position: absolute;
+  top: 16%;
+  left: 8%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 7px var(--color-gold-faint);
+  content: "";
+}
+
+.sa-registration-hero__ring--two {
+  top: 3px;
+  right: 10%;
+  width: 270px;
+  height: 270px;
+  border: 1px dashed var(--color-border-strong);
+  opacity: 0.5;
+  animation: saRegHeroSpinReverse 19s linear infinite;
+}
+
+.sa-registration-hero__shape--purple {
+  z-index: 1;
+  top: 92px;
+  right: 13%;
+  width: 170px;
+  height: 140px;
+  border-radius: 54% 46% 62% 38% / 59% 39% 61% 41%;
+  background: var(--gradient-primary-wide);
+  opacity: 0.08;
+  animation: saRegHeroMorph 8s ease-in-out infinite alternate;
+}
+
+.sa-registration-hero__shape--dark {
+  z-index: 1;
+  top: 112px;
+  right: 25%;
+  width: 102px;
+  height: 58px;
+  border-radius: 60% 40% 52% 48%;
+  background: var(--gradient-dark);
+  opacity: 0.06;
+  transform: rotate(-24deg);
+  animation: saRegHeroDarkFloat 7s ease-in-out infinite alternate;
+}
+
+.sa-registration-hero__dots {
+  z-index: 1;
+  right: 3%;
+  bottom: 34px;
+  width: 76px;
+  height: 76px;
+  opacity: 0.24;
+  background-image:
+    radial-gradient(var(--color-primary) 1.3px, transparent 1.3px);
+  background-size: 10px 10px;
+}
+
+.sa-registration-hero__particle {
+  z-index: 2;
+  display: block;
+  border-radius: 50%;
+}
+
+.sa-registration-hero__particle--one {
+  top: 65px;
+  left: 48%;
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 6px var(--color-gold-faint);
+  animation: saRegHeroParticleOne 5s ease-in-out infinite;
+}
+
+.sa-registration-hero__particle--two {
+  right: 31%;
+  bottom: 58px;
+  width: 7px;
+  height: 7px;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 6px var(--color-purple-faint);
+  animation: saRegHeroParticleTwo 6.5s ease-in-out infinite;
+}
+
+@keyframes saRegHeroBadgeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes saRegHeroAmbientOne {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-34px, 28px, 0) scale(1.08);
+  }
+}
+
+@keyframes saRegHeroAmbientTwo {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(42px, -26px, 0) scale(1.08);
+  }
+}
+
+@keyframes saRegHeroSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes saRegHeroSpinReverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes saRegHeroMorph {
+  from {
+    border-radius: 54% 46% 62% 38% / 59% 39% 61% 41%;
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    border-radius: 43% 57% 41% 59% / 63% 42% 58% 37%;
+    transform: translateY(14px) rotate(11deg);
+  }
+}
+
+@keyframes saRegHeroDarkFloat {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-24deg);
+  }
+  to {
+    transform: translate3d(-12px, 12px, 0) rotate(-17deg);
+  }
+}
+
+@keyframes saRegHeroParticleOne {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(14px, 10px, 0);
+  }
+}
+
+@keyframes saRegHeroParticleTwo {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-15px, -11px, 0);
+  }
+}
+
+@media (max-width: 900px) {
+  .sa-registration-hero__inner {
+    min-height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    padding-top: 44px;
+    padding-bottom: 48px;
+  }
+
+  .sa-registration-hero__badge {
+    width: max-content;
+    max-width: 100%;
+    flex-basis: auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .sa-registration-hero__inner {
+    padding-top: 30px;
+    padding-bottom: 38px;
+  }
+
+  .sa-registration-hero__back {
+    margin-bottom: 18px;
+    font-size: 0.7rem;
+  }
+
+  .sa-registration-hero__eyebrow {
+    font-size: 0.68rem;
+  }
+
+  .sa-registration-hero__title {
+    font-size: clamp(2.3rem, 11vw, 3.2rem);
+  }
+
+  .sa-registration-hero__copy {
+    font-size: 0.84rem;
+    line-height: 1.65;
+  }
+
+  .sa-registration-hero__badge {
+    padding: 12px 14px;
+  }
+
+  .sa-registration-hero__badge-icon {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+
+  .sa-registration-hero__ring--one {
+    right: -115px;
+  }
+
+  .sa-registration-hero__ring--two {
+    right: -65px;
+  }
+
+  .sa-registration-hero__dots {
+    right: 5px;
+    bottom: 20px;
+    width: 58px;
+    height: 58px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sa-registration-hero__ambient,
+  .sa-registration-hero__ring,
+  .sa-registration-hero__shape,
+  .sa-registration-hero__particle,
+  .sa-registration-hero__badge {
+    animation: none !important;
+  }
+}
